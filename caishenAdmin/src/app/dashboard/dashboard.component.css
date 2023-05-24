@@ -1,0 +1,51 @@
+.app-brand demo{
+  background-color: #041775;
+}
+.form-inline {
+  margin-left: 10%;
+}
+.search {
+
+display: flex;
+gap: 0.5rem;
+}
+.nav-link{
+  font-size: large;
+  font-weight:500;
+}
+.logo{
+  width: 11%;
+  height: 7.5%;
+  margin-top: -2%;
+  margin: 0 auto;
+  display: block;
+}
+.btn-outline-success{
+  color: #041775;
+  border-color: #041775;
+}
+.btn-outline-success:hover{
+  color: #fff;
+  background-color: #041775;
+  border-color: #041775;
+}
+.btn-outline-success:focus {
+  background-color: transparent;
+}
+ul.navbar-nav {
+  padding-top: 0.5% ;
+}
+.btn-success{
+  background-color: #df3651;
+  border-color: #df3651;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+.nav.nav-tabs {
+  display: flex;
+}
+
+.nav-link {
+  flex: 1;
+  /* Additional styling */
+}

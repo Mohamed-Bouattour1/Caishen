@@ -62,13 +62,10 @@ class _welcomeState extends State<welcome> {
                   right: 10,
                   child: Container(
                     width: size.width * 0.183,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle
-                    ),
-                    
-                    child: DropdownButtonHideUnderline (
+                    decoration: BoxDecoration(shape: BoxShape.circle),
+                    child: DropdownButtonHideUnderline(
                       child: DropdownButton<Language>(
-                                      alignment: Alignment.center,
+                        alignment: Alignment.center,
                         hint: Icon(
                           Icons.language,
                           color: bleufonce,

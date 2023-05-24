@@ -1,0 +1,275 @@
+<!-- Layout container -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <img src="assets/images/logo-29.png" class="logo" alt="" />
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button
+        class="nav-link active"
+        id="nav-profile-tab "
+        data-bs-toggle="tab"
+        data-bs-target="#Clients"
+        type="button"
+        role="tab"
+        aria-controls="Clients"
+        aria-selected="false"
+        (click)="showTable(true)"
+      >
+        Clients
+      </button>
+      <button
+        class="nav-link"
+        id="nav-contact-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#Demandes"
+        type="button"
+        role="tab"
+        aria-controls="Demandes"
+        aria-selected="false"
+        (click)="showTable(false)"
+      >
+        Demandes
+      </button>
+    </div>
+    <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Clients </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Demandes</a>
+      </li>
+    </ul> -->
+    <form class="form-inline my-2 my-lg-0">
+      <div class="search">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="nav navbar-nav navbar-right">
+    <a class="nav-link active" href="#"
+      ><span class="fa fa-sign-out"></span> Deconnexion</a
+    >
+  </div>
+</nav>
+<!-- / Navbar -->
+
+<!-- Content wrapper -->
+
+<div class="tab-content" id="myTabContent">
+  <div
+    class="tab-pane fade show active"
+    id="Clients"
+    role="tabpanel"
+    aria-labelledby="teams-tab"
+  >
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div
+              class="widget-next-match"
+              id="Clients-table"
+              *ngIf="showDemandes"
+            >
+              <h1>Clients</h1>
+              <a routerLink="add" class="btn btn-sm btn-success mb-2"
+                >Ajouter Client</a
+              >
+              <table class="table custom-table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Cin</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr appColorDirective>
+                    <td></td>
+                    <td><strong class="text-white"></strong></td>
+                    <td><strong class="text-white"></strong></td>
+                    <td></td>
+
+                    <td>
+                      <button type="button" class="btn btn-danger">
+                        Delete
+                      </button>
+                      <button type="button" class="btn btn-info">Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="tab-pane fade show active"
+    id="Demandes"
+    role="tabpanel"
+    aria-labelledby="players-tab"
+  >
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div
+              class="widget-next-match"
+              id="Demandes-table"
+              *ngIf="!showDemandes"
+            >
+              <h1>Demandes</h1>
+              <a routerLink="add" class="btn btn-sm btn-success mb-2"
+                >Ajouter Demande</a
+              >
+              <table class="table custom-table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Cin</th>
+                    <th>Date de simultation</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr appColorDirective>
+                    <td></td>
+                    <td><strong class="text-white"></strong></td>
+                    <td><strong class="text-white"></strong></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" class="btn btn-danger">
+                        Delete
+                      </button>
+                      <button type="button" class="btn btn-info">Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="content-wrapper">
+   Content
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 30%">Prenom</th>
+        <th style="width: 30%">Nom</th>
+        <th style="width: 30%">CIN</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.username }}</td>
+        <td style="white-space: nowrap">
+          <a routerLink="edit/{{ user.id }}" class="btn btn-sm btn-primary mr-1"
+            >Modifier</a
+          >
+          <button
+            (click)="deleteUser(user.id)"
+            class="btn btn-sm btn-danger btn-delete-user"
+            [disabled]="user.isDeleting"
+          >
+            <span
+              *ngIf="user.isDeleting"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span *ngIf="!user.isDeleting">Supprimer</span>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="!users">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  / Layout page
+</div> -->
+
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+
+<!-- Helpers -->
+<script src="assets/vendor/js/helpers.js"></script>
+
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script src="assets/js/config.js"></script>
+
+<script src="assets/js/app.js" type="text/javascript"></script>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script
+  src="assets/vendor/libs/jquery/jquery.js"
+  type="text/javascript"
+></script>
+<script
+  src="assets/vendor/libs/popper/popper.js"
+  type="text/javascript"
+></script>
+<script src="assets/vendor/js/bootstrap.js" type="text/javascript"></script>
+<script
+  src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"
+  type="text/javascript"
+></script>
+
+<script src="assets/vendor/js/menu.js" type="text/javascript"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script
+  src="assets/vendor/libs/apex-charts/apexcharts.js"
+  type="text/javascript"
+></script>
+
+<!-- Main JS -->
+<script src="assets/js/mainn.js"></script>
+
+<!-- Page JS -->
+<script src="assets/js/dashboards-analytics.js" type="text/javascript"></script>
+<script src="assets/js/ui-modals.js" type="text/javascript"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
