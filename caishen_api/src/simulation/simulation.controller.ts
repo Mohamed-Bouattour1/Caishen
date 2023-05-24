@@ -60,8 +60,6 @@ export class SimulationController {
   @UseGuards(RolesGuard)
   @UseGuards(AuthGuard())
   async getPdf(@Res() res: Response, @Param('id') id, @Req() req ) {
-    console.log("hihihihihihi")
-    console.log(id)
     const pdfBytes = await this.simulationService.generateTablePdf(id,req.user);
     console.log(pdfBytes);
   

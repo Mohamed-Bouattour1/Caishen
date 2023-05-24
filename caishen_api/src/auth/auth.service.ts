@@ -33,7 +33,7 @@ export class AuthService {
                 mdp: hashedmdp,
             });
 
-            const token = this.jwtService.sign({id:user._id, role: user.role, nom:user.nom, prenom:user.prenom});
+            const token = this.jwtService.sign({id:user._id, role: user.role, status: user.status, nom:user.nom, prenom:user.prenom});
             
             return { token };
 
@@ -51,7 +51,7 @@ export class AuthService {
                 throw new UnauthorizedException('Email ou Mot de Passe incorrect');
             }
 
-            const token = this.jwtService.sign({id:user._id, role: user.role, nom:user.nom, prenom:user.prenom});
+            const token = this.jwtService.sign({id:user._id, role: user.role, status: user.status, nom:user.nom, prenom:user.prenom});
             
             return { token };
          }

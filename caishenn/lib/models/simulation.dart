@@ -4,6 +4,7 @@
 class simulation {
   String? user;
   String? id_sim;
+  String? type;
   num? mnt_crd;
   num? mnt_rnb;
   num? duree_rnb;
@@ -17,6 +18,7 @@ class simulation {
   simulation(
       {this.user,
       this.id_sim,
+      this.type,
       this.mnt_crd,
       this.mnt_rnb,
       this.duree_rnb, 
@@ -32,6 +34,7 @@ class simulation {
   simulation.fromJson(Map<dynamic, dynamic> json) {
     user = json['user'] ;
     id_sim = json['_id'];
+    type = json['type'];
     mnt_crd = json['mnt_crd'];
     mnt_rnb = json['mnt_rnb'];
     duree_rnb = json['duree_rnb'];

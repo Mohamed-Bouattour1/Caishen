@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { jwtStrategy } from './auth/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { RolesGuard } from 'src/auth/guards/role/role.guard';
+import { DemandeModule } from './demande/demande.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RolesGuard } from 'src/auth/guards/role/role.guard';
     SimulationModule,
     MongooseModule.forRoot('mongodb+srv://admin:admin@battoua.73bqqwa.mongodb.net/caishenn?retryWrites=true&w=majority'),
     AuthModule,
+    DemandeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

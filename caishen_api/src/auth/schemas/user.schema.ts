@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import  { Document } from "mongoose";
 import {ERole} from './ERole.enum';
+import { EStatus } from "./EStatus.enum";
 
 @Schema({
     timestamps: true,
@@ -9,6 +10,9 @@ import {ERole} from './ERole.enum';
 
     @Prop({required: [true],default:ERole.Client})
     role: ERole
+
+    @Prop({required: [true],default:EStatus.LIBRE})
+    status: EStatus
 
     @Prop({required:[true,"Nom requis"]})
     nom : string

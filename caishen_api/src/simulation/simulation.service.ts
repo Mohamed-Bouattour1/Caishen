@@ -7,7 +7,6 @@ import { User } from '../auth/schemas/user.schema';
 import { log, round, string } from 'mathjs';
 import { AuthService } from 'src/auth/auth.service';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import { Type } from 'class-transformer';
 
 
 
@@ -62,6 +61,7 @@ export class SimulationService {
     }
     createdsim.montant_rnb_total = createdsim.mnt_rnb * createdsim.duree_rnb
 
+  
     return createdsim.save();
   }
 
