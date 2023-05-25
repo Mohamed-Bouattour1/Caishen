@@ -48,6 +48,22 @@ export class DemandeService {
  
 
   }
+
+
+  async getDemandeById({id}): Promise<Demande>{
+    return await this.DemandeModel.findOne({_id: id});
+  }
+
+  async getDemandesByclient({id}): Promise<Demande[]>{
+    return await this.DemandeModel.find({user: id});
+  }
+
+  async getAllDemandes(): Promise<Demande[]>{
+    return await this.DemandeModel.find();
+  }
+
+
+
   async getDocsByEng(eng: ObjectId): Promise<doc[]>{
     return await this.docModel.find({engagement: eng}).exec()
   }
@@ -83,8 +99,13 @@ export class DemandeService {
     console.log(file.path)
     docdem.filename = file.originalname
     docdem.filepath = file.path;
+    if (docdem.save()) {
+      dema.docs.push(title)
+      dema.save()
+      console.log(docdem);
+    }
+
     
-    console.log(docdem.save());
   }
 
   async createDocsByEng(demande: mongoose.Types.ObjectId, docs: doc[]){

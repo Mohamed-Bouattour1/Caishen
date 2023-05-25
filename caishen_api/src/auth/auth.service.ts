@@ -9,6 +9,7 @@ import { LoginDto } from './dto/login-user.dto';
 import { checkmailDTO } from './dto/checkmail.dto';
 import { Invite } from './schemas/invite.schema';
 import { resetPassDTO } from './dto/resetpass.dto';
+import { ERole } from './schemas/ERole.enum';
 
 @Injectable()
 export class AuthService {
@@ -80,6 +81,7 @@ export class AuthService {
             const token = this.jwtService.sign({id:user._id});
             
             return { token };
+
         }
 
         async createInvt(imei: number) : Promise<Invite>{
@@ -94,4 +96,21 @@ export class AuthService {
 
 
         }
+
+
+        async getAllClients() : Promise<User[]>{
+
+            return await this.userModel.find({role: ERole.Client});
+
+
+        }
+
+        async getOneClients({id}) : Promise<User>{
+
+            return await this.userModel.findOne({_id: id});
+
+
+        }
+
+
 }

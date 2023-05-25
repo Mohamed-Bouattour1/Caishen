@@ -11,6 +11,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { createDocDTO } from './dto/createdoc.dto';
+import { ObjectId } from 'mongoose';
 
 @Controller('api/demande')
 export class DemandeController {
@@ -25,19 +26,30 @@ export class DemandeController {
   }
 
   @Get()
+  @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+  @UseGuards(AuthGuard())
   findAll() {
-    return this.demandeService.findAll();
+    return this.demandeService.getAllDemandes();
+  }
+  @Post('/client')
+  @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+  @UseGuards(AuthGuard())
+  findOneByClient(@Body() id) {
+    return this.demandeService.getDemandesByclient(id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.demandeService.findOne(+id);
+  @Post('/dem')
+  @UseGuards(AuthGuard())
+  findOneById(@Body() id) {
+    return this.demandeService.getDemandeById(id);
   }
 
-  @Patch(':id')
+ /*  @Patch(':id')
   update(@Param('id') id: string, @Body() updateDemandeDto: UpdateDemandeDto) {
     return this.demandeService.update(+id, updateDemandeDto);
-  }
+  } */
 
   @Delete(':id')
   remove(@Param('id') id: string) {

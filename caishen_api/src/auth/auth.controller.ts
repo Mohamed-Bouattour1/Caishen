@@ -5,6 +5,10 @@ import { LoginDto } from './dto/login-user.dto';
 import { checkmailDTO } from './dto/checkmail.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { resetPassDTO } from './dto/resetpass.dto';
+import { User } from './schemas/user.schema';
+import { Roles } from './Role.decorator';
+import { RolesGuard } from './guards/role/role.guard';
+import { ERole } from './schemas/ERole.enum';
 
 @Controller('api/auth')
 export class AuthController {
@@ -27,5 +31,21 @@ export class AuthController {
     @UseGuards(AuthGuard())
     resetpass(@Body() resetpassdto: resetPassDTO, @Req() req ) : Promise<boolean>{
         return this.authservice.resetPass(resetpassdto,req.user);
+    }
+
+    @Post('/user/all')
+    @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+    @UseGuards(AuthGuard())
+    getAllClients() : Promise<User[]>{
+        return this.authservice.getAllClients();
+    }
+
+    @Post('/user/one')
+    @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+    @UseGuards(AuthGuard())
+    getOneClients(@Body() id) : Promise<User>{
+        return this.authservice.getOneClients(id);
     }
 }
