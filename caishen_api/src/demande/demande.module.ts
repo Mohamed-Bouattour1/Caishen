@@ -7,10 +7,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { doc, docSchema } from './schemas/document.schema';
 import { DocumentDemande, DocumentDemandeSchema } from './schemas/document_demande.schema';
 import { Engagement, EngagementSchema } from './schemas/engagement.schema';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
     AuthModule,
+    MulterModule.register({ dest: './uploads' }),
     MongooseModule.forFeature([{ name: Demande.name, schema: DemandeSchema }]),
     MongooseModule.forFeature([{ name: doc.name, schema: docSchema }]),
     MongooseModule.forFeature([{ name: DocumentDemande.name, schema: DocumentDemandeSchema }]),

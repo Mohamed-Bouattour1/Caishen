@@ -1,0 +1,103 @@
+intro gen  cqoui prob sol compose de 3 ou 4 chap chap 1 tel et tel 
+chap 1 presentation entreprise etude de lenxitant et on va la critique et presenter la solution propose besoin fonc et non fonct la methodologie scrum agile / en cascade
+chap 2 etat de lart composant du projet micro credit sujet f itar theoriquement 
+chap 3 conception diagrame cas utilisation general (raport rahma conception tayyara ) cas utilisation rafine diagrame de sequence authentification quelques fonctionalite diagrame de classe 
+chap 4 realisation environnement logiciel outils realisation interfaces	
+conc gen
+
+http://192.168.0.117:7003/unibank/resources/simulation/simulationDurCST
+
+{
+"numsmf":"1300",  
+"bnfsmf":"test",
+"codengsmf":"0099",
+"mntsmf":"10000",
+"dursmf":"24",
+"dbksmf":"01062023",
+"pdpsmf":"01",
+"pepsmf":"01072023",
+"mgasmf":"1.5"
+}
+numero simulation
+beneficiaire
+code engagement
+montant
+duree
+date deblocage
+periodicité
+1er echeance
+marge
+
+
+Client
+Simulateur
+Garants*
+Parrains
+Agences
+credit
+Documents
+Compte
+Echeances
+
+PUT
+http://192.168.0.117:7003/unibank/resources/simulation/simulationDurCST
+
+
+git add .
+git commit -m "msg mteek"
+git push
+
+demarche 
+problematique
+acronyme fintech
+** besoins fonc ajouter scan upload et autre futures
+** plus de critique pour enda
+** besoin fonc suivi de demande pas sure
+
+
+table application 
+invité
+coordonnée type?
+documents demande
+parametre envoyer simulation
+
+
+
+chap 1 : contexte generale
+
+organisme 
+demarche 
+methodologie
+imf et microcredt
+
+
+chap 2 : analyse et specification des besoins
+
+problematique 
+etude de l'existant 
+solution
+besoin
+
+bienvenue
+	authentification
+		connexion
+		creer compte
+		changer mot de passe
+			Home
+				demande
+	simulateur
+	contact
+	agences
+
+
+je veux un pdf qui contient un tableau :
+ligne 1 : "simulation du 25/10/2020" centré au milieu de la ligne
+ligne 2 : "en faveur de Invité" centré au milieu de la ligne
+ligne 3 : "Montant Crédit" centré au milieu de la ligne
+ligne 4 : "Montant crédit" "Montant échéance" "Durée" "Taux appliqué" "Total remboursement"
+ligne 5 : "100000" "2027" "60" "8.0%" "125000"
+avec les lignes 1, 2 et 3 sans séparation et la taille de la ligne 5 est plus grande que la ligne 4
+
+
+
+

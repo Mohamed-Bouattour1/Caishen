@@ -15,9 +15,16 @@ import  { Document } from "mongoose";
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "doc" })
     doc: doc
 
-    @Prop({required: true})
-    contenu: Buffer
+     
+    @Prop({default: ""})
+    filename: string
+     
+    @Prop({default: ""})
+    filepath: string
 
+   /*  @Prop({required: true})
+    contenu: Buffer
+ */
   }
 
   export const DocumentDemandeSchema = SchemaFactory.createForClass(DocumentDemande);

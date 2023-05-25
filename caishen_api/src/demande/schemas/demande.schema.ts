@@ -23,6 +23,9 @@ export class Demande {
     user:User
 
     @Prop()
+    docs : string[]
+
+    @Prop()
     type : string
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Engagement" })

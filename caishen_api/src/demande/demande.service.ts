@@ -4,12 +4,13 @@ import { UpdateDemandeDto } from './dto/update-demande.dto';
 import { User } from 'src/auth/schemas/user.schema';
 import { Model, ObjectId } from 'mongoose';
 import mongoose from "mongoose";
-
+import { EStatus } from "../auth/schemas/EStatus.enum";
 import { InjectModel } from '@nestjs/mongoose';
 import { doc } from './schemas/document.schema';
 import { Engagement } from './schemas/engagement.schema';
 import { DocumentDemande } from './schemas/document_demande.schema';
 import { Demande } from './schemas/demande.schema';
+import { createDocDTO } from './dto/createdoc.dto';
 
 @Injectable()
 export class DemandeService {
@@ -22,7 +23,7 @@ export class DemandeService {
     ) { }
 
 
-  async create(createDemandeDto: CreateDemandeDto, user: User): Promise<DocumentDemande[]> {
+  async create(createDemandeDto: CreateDemandeDto, user: User): Promise<string[]> {
 
     const eng = await this.findEngByNoun(createDemandeDto["type"])
     if (!eng) {
@@ -38,7 +39,11 @@ export class DemandeService {
 
     const demande = await createddem.save();
     if(demande) {
-         return await this.createDocsByEng(demande._id,docs)
+      user.dem = demande;
+      user.status = EStatus.EN_ATTENTE;
+      await user.save();
+      await this.createDocsByEng(createddem._id,docs);
+         return await this.getDocsTitleByEng(docs)
     }
  
 
@@ -51,14 +56,44 @@ export class DemandeService {
     return await this.engagementModel.findOne({nom:nom}).exec()
   } 
 
-  async createDocsByEng(demande: mongoose.Types.ObjectId, docs: doc[]): Promise<DocumentDemande[]>{
-    let docsdem = []
+  async getDocsTitleByEng(docs: doc[]): Promise<string[]>{
+    let titles = []
     for (const doc of docs){
-      docsdem.push(await new this.docdemModel({demande: demande, doc: doc._id}).save())
+      titles.push(doc.titre)
     }
-    return docsdem
+    return titles
+  }
+
+  async handleUpload(title: string, file: Express.Multer.File, user: User){
+    console.log("titre")
+    console.log(title)
+    console.log("demande user")
+    console.log(user.dem)
+    const dema = await this.DemandeModel.findOne({_id: user.dem})
+    console.log(dema)
+    console.log("eng")
+    const eng = await this.engagementModel.findOne({nom: dema.type})
+    console.log(eng)
+    const doc = await this.docModel.findOne({engagement: eng, titre:title}).exec()
+    const docdem = await this.docdemModel.findOne({demande: user.dem, doc:doc }).exec();
+    console.log("doc dem")
+    console.log(docdem)
+    console.log(docdem.filename)
+    console.log(file.originalname)
+    console.log(file.path)
+    docdem.filename = file.originalname
+    docdem.filepath = file.path;
+    
+    console.log(docdem.save());
+  }
+
+  async createDocsByEng(demande: mongoose.Types.ObjectId, docs: doc[]){
+    for (const doc of docs){
+      await new this.docdemModel({demande: demande, doc: doc._id, filename:"", filepath:""}).save()
+    }
   }
   
+
 
   findAll() {
     return `This action returns all demande`;
@@ -75,4 +110,17 @@ export class DemandeService {
   remove(id: number) {
     return `This action removes a #${id} demande`;
   }
+
+
+  async adddoc(createdocdto: createDocDTO){
+
+    
+    const eng = (await this.engagementModel.findOne({nom: createdocdto["eng"]}))._id;
+    const titre = createdocdto["titre"];
+    const doc = await new this.docModel({engagement: eng, titre: titre})
+    console.log(doc)
+    doc.save();
+  } 
+
+
 }

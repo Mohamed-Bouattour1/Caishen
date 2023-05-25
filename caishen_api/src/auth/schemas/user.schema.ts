@@ -1,7 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import  { Document } from "mongoose";
+import  mongoose, { Document } from "mongoose";
 import {ERole} from './ERole.enum';
 import { EStatus } from "./EStatus.enum";
+import { Demande } from "src/demande/schemas/demande.schema";
 
 @Schema({
     timestamps: true,
@@ -13,6 +14,9 @@ import { EStatus } from "./EStatus.enum";
 
     @Prop({required: [true],default:EStatus.LIBRE})
     status: EStatus
+
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Demande" })
+    dem: Demande
 
     @Prop({required:[true,"Nom requis"]})
     nom : string
