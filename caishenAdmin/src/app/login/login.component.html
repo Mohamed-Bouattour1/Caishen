@@ -54,7 +54,7 @@
             <div class="fxt-transformY-50 fxt-transition-delay-2">
               <p>Se Connecter dans notre application</p>
             </div>
-            <form (ngSubmit)="Login()">
+            <form [formGroup]="form" (ngSubmit)="Login()">
               <div class="form-group">
                 <div class="fxt-transformY-50 fxt-transition-delay-4">
                   <input
@@ -63,8 +63,9 @@
                     name="email"
                     placeholder="Addresse Email .."
                     required="required"
-                  />
-                  <!-- [(ngModel)]="user.email" -->
+                  formControlName="email"
+                    />
+                  
 
                   <i class="fa fa-envelope"></i>
                 </div>
@@ -77,8 +78,9 @@
                     name="password"
                     placeholder="Mot de Passe .."
                     required="required"
-                  />
-                  <!-- [(ngModel)]="user.password" -->
+                    formControlName="password"
+                    />
+                  
 
                   <i class="fa fa-lock"></i>
                 </div>
@@ -89,7 +91,6 @@
                     <button
                       type="submit"
                       class="fxt-btn-fill"
-                      routerLink="/dashboard"
                     >
                       Se Connecter
                     </button>
