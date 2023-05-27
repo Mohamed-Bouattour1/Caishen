@@ -51,7 +51,7 @@ export class SimulationController {
   @Roles(ERole.Client)
   @UseGuards(RolesGuard)
   @UseGuards(AuthGuard())
-  removesim(@Param('id') id: string , @Req() req) {
+  removesim(@Param('id') id , @Req() req) {
     return this.simulationService.removesim(id,req.user);
   }
 

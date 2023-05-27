@@ -11,8 +11,10 @@ import '../../tools/utilities.dart';
 
 
 valider_doc(BuildContext context, File file, Token token, String titre, List<dynamic> titres) async{
+  print(file);
     var res = await demandeservice.upload(file, titre, token);
-    if (res == "file uploaded") {
+    print("hhhhhh"+res);
+    if (res == "Uploaded!") {
       titres.remove(titre);
       Navigator.push(context,
                       MaterialPageRoute(builder: (_) => fonc(token: token, titres: titres)));

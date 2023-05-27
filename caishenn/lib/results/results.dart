@@ -1,14 +1,16 @@
 
 import 'package:caishenn/models/simulation.dart';
 import 'package:flutter/material.dart';
+import '../models/token.dart';
 import '../tools/Colors.dart';
 import '../tools/loadingScreen.dart';
 import '../tools/newclip.dart';
 
 class results extends StatefulWidget {
   final simulation sim;
+  Token? token;
 
-   results({super.key, required this.sim});
+   results({super.key, required this.sim, this.token });
 
   @override
   State<results> createState() => _resultsState();

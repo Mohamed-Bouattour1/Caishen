@@ -1,10 +1,11 @@
 import 'dart:convert';
-
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/simulateur/input_Field.dart';
 import 'package:caishenn/tools/utilities.dart';
+import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../results/results.dart';
 import '../services/simulation_service.dart';
 import '../tools/Colors.dart';
@@ -306,8 +307,26 @@ class _simulateurState extends State<simulateur> {
               ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)))));
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token,)));
           }
+        }else{
+          try
+          {
+            var platformVersion = await DeviceInformation.platformVersion;
+            var imei = int.parse(await DeviceInformation.deviceIMEINumber);
+          print(imei);
+          var res = await simulationService.simRequestinv(tosend,imei );
+          if (res == "error") {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+          } else {
+            print(res);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)),)));
+          }}on PlatformException {
+      print('Failed to get platform version.');
+    }
         }
       } else if (_amountrnbController.text.isEmpty ||
           _DureeController.text.isEmpty) {

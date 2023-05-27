@@ -11,7 +11,7 @@ class demandeservice {
 
   static String BASE_URL = "http://192.168.1.188:3000/api/demande";
  static Future<List<dynamic>> demRequest(demande dem , Token token) async {
-
+    
     http.Response res = await http.post( Uri.parse(BASE_URL), 
 
         headers: {
@@ -19,6 +19,7 @@ class demandeservice {
       "Content-Type": "application/json",
       "Authorization":"Bearer ${token.token}"
     },
+    
     body:jsonEncode(dem) ,
     encoding: Encoding.getByName("utf-8"),
     );
@@ -35,7 +36,24 @@ class demandeservice {
 
 static Future<String> upload(File file , String titre, Token token) async {
 
-    http.Response res = await http.post( Uri.parse(BASE_URL+'/file/${titre}'), 
+  var posturi = Uri.parse(BASE_URL+'/file/${titre}');
+   var request = new http.MultipartRequest("POST", posturi);
+  var headersMap = new Map<String, String>();
+  headersMap["authorization"] = "Bearer ${token.token}";
+  request.headers.addAll(headersMap);
+  print(await file.readAsBytes());
+  print(file.path);
+    request.files.add(http.MultipartFile.fromBytes("file", file.readAsBytesSync(),filename: file.path));
+    print(request.files);
+    var response = await request.send();
+    if (response.statusCode == 201) {
+      return "Uploaded!";
+      }else{
+        return "error";
+      }        
+
+
+   /*  http.Response res = await http.post( Uri.parse(BASE_URL+'/file/${titre}'), 
 
         headers: {
       "Authorization":"Bearer ${token.token}"
@@ -50,7 +68,7 @@ static Future<String> upload(File file , String titre, Token token) async {
         return "file uploaded";
       }
 
-      return "error";
+      return "error"; */
 
 }
 

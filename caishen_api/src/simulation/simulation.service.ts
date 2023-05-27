@@ -81,7 +81,7 @@ export class SimulationService {
      });
    } */
 
-  removesim(id: string, user: User) {
+  removesim(id: ObjectId, user: User) {
     return this.simulationModel.findOneAndDelete({ _id: id, user: user._id });
   }
 

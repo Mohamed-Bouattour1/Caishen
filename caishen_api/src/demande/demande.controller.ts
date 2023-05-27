@@ -56,6 +56,14 @@ export class DemandeController {
     return this.demandeService.remove(+id);
   }
 
+  /* @Post('/file/:title')
+  // You're not actually providing a file, but the interceptor will expect "form data" 
+  // (at least in a high level, that's how I think this interceptor works)
+  @UseInterceptors(FileInterceptor('file'))
+  login(@Body() body) {
+      console.log(body);
+  } */
+
   @Post('/file/:title')
   @Roles(ERole.Client)
   @UseGuards(RolesGuard)
@@ -75,6 +83,7 @@ export class DemandeController {
     }),
   )
   handleUpload(@UploadedFile() file: Express.Multer.File, @Req() req, @Param('title') title) {
+    console.log(req.files);
     console.log('file', file);
     this.demandeService.handleUpload(title, file, req.user)
     return 'File upload API';

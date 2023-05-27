@@ -50,7 +50,87 @@ static Future<List<dynamic>> getAllsimRequest(Token token) async {
 
 }
 
- 
+ static Future<String> simRequestinv(simulation sim , int imei) async {
+
+    http.Response res = await http.post( Uri.parse(BASE_URL+'/invite/${imei}'), 
+
+        headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body:jsonEncode(sim) ,
+    encoding: Encoding.getByName("utf-8"),
+    );
+
+    print(res.statusCode);
+      if (res.statusCode == 201) {
+        
+        return res.body;
+      }
+
+      return "error";
+
+}
+
+static  getpdf(Token token, String id) async {
+
+    http.Response res = await http.get( Uri.parse(BASE_URL+'/getpdf/user/${id}'), 
+
+        headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization":"Bearer ${token.token}"
+    },
+    );
+
+    print(res.statusCode);
+      if (res.statusCode == 200) {
+        return res.body;
+      }
+
+      
+
+}
+
+static  getpdfinv(String id) async {
+
+    http.Response res = await http.get( Uri.parse(BASE_URL+'/getpdf/invite/${id}'), 
+
+        headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    );
+
+    print(res.statusCode);
+      if (res.statusCode == 200) {
+        return res.body;
+      }
+
+      
+
+}
+
+static Future<String> deletesim(String id , Token token) async {
+  print(id);
+ var url = Uri.parse(BASE_URL+'/${id}');
+ print(url);
+    http.Response res = await http.delete(url, 
+
+        headers: {
+      "Authorization":"Bearer ${token.token}"
+    },
+    );
+
+    print(res.statusCode);
+      if (res.statusCode == 200) {
+        
+        return "deleted";
+      }
+
+      return "error";
+
+}
 
 
 }

@@ -45,7 +45,7 @@ bool isvisible = false;
               child: Text('Upload'),
             ),
             SizedBox(height: 20),
-            if (file != null) Image.file(file!),
+           // if (file != null) Image.file(file!),
             SizedBox(height: 20),
              Visibility(
               visible: this.isvisible,

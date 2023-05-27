@@ -81,6 +81,8 @@ export class DemandeService {
   }
 
   async handleUpload(title: string, file: Express.Multer.File, user: User){
+    console.log("file")
+    console.log(file)
     console.log("titre")
     console.log(title)
     console.log("demande user")
@@ -110,7 +112,7 @@ export class DemandeService {
 
   async createDocsByEng(demande: mongoose.Types.ObjectId, docs: doc[]){
     for (const doc of docs){
-      await new this.docdemModel({demande: demande, doc: doc._id, filename:"", filepath:""}).save()
+      await console.log(new this.docdemModel({demande: demande, doc: doc._id, filename:"", filepath:""}).save())
     }
   }
   
