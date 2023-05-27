@@ -285,7 +285,7 @@ class _homeState extends State<home> {
             child: Container(
               width: size.width,
               height: size.height,
-              child: widget.token.status == "Libre" ? homeFirst(token : widget.token) : homeAfter() ,
+              child: homeFirst(token : widget.token) ,
             ),
           ),
           Positioned(

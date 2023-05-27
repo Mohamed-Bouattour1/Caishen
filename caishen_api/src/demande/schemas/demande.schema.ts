@@ -16,9 +16,6 @@ import { Engagement } from "./engagement.schema";
 )
 export class Demande {
 
-    @Prop()
-    date: string
-
     @Prop({type: mongoose.Schema.Types.ObjectId , ref:"User"})
     user:User
 

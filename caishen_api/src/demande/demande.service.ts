@@ -31,7 +31,7 @@ export class DemandeService {
     }
     const data = Object.assign({ user: user._id, engagement: eng._id }, createDemandeDto);
     const createddem = await new this.DemandeModel(data);
-    createddem.date = (" "+new Date().toISOString()).substring(0,10);
+    createddem.createdAt = (" "+new Date().toISOString()).substring(0,10);
     const docs = await this.getDocsByEng(createddem.engagement._id);
     if (!docs) {
       throw new NotFoundException('documents non existants pour cet engagement')
@@ -142,6 +142,15 @@ export class DemandeService {
     console.log(doc)
     doc.save();
   } 
+
+  async getAllEngagements(): Promise<string[]>{
+    let noms = []
+    const engs = await this.engagementModel.find();
+    for (const eng of engs){
+      noms.push(eng.nom)
+    }
+    return noms;
+  }
 
 
 }

@@ -311,7 +311,9 @@ class _simulateurState extends State<simulateur> {
         }
       } else if (_amountrnbController.text.isEmpty ||
           _DureeController.text.isEmpty) {
-        pop();
+        ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
       }
     } else if (thm == rose1) {
       _DureeController.clear();
@@ -332,7 +334,9 @@ class _simulateurState extends State<simulateur> {
         }
       } else if (_amountController.text.isEmpty ||
           _amountrnbController.text.isEmpty) {
-        pop();
+        ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
       }
     } else if (thm == bleuclaire1) {
       print("bleuclaire");
@@ -354,12 +358,14 @@ class _simulateurState extends State<simulateur> {
         }
       } else if (_amountController.text.isEmpty ||
           _DureeController.text.isEmpty) {
-        pop();
+        ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
       }
     }
   }
 
-  Future<dynamic> pop() {
+  /* Future<dynamic> pop() {
     return showDialog(
       context: context,
       builder: (_) => AlertDialog(
@@ -386,5 +392,5 @@ class _simulateurState extends State<simulateur> {
       ),
       //barrierDismissible: false,
     );
-  }
+  } */
 }

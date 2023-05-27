@@ -84,4 +84,9 @@ export class DemandeController {
   adddoc(@Body() doc: createDocDTO ){
     this.demandeService.adddoc(doc)
   }
+
+  @Get('/eng')
+  findAlleng() {
+    return this.demandeService.getAllEngagements();
+  }
 }

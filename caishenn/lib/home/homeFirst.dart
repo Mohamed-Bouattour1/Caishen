@@ -17,68 +17,7 @@ class _homeFirstState extends State<homeFirst> {
     final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: size.width * 0.9,
-          height: size.height * 0.3,
-          decoration: BoxDecoration(
-            color: bleuclaire5,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Bienvenue ${widget.token.nom}",
-                      style: TextStyle(
-                          color: rose,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17),
-                    ),
-                    Text(
-                      "Commencer Votre Processus,\navec des Etapes Simples.",
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontSize: 11,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (_) => demande(token:widget.token,)));
-                      },
-                      child: Container(
-                        width: (size.width * 0.8) * 0.45,
-                        height: (size.height * 0.3) * 0.15,
-                        decoration: BoxDecoration(
-                            color: bleufonce,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Center(
-                          child: Text(
-                            "Commencer",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: (size.width * 0.8) * 0.7,
-                  child: Image.asset('assets/images/homefirst.png'),
-                ),
-              ),
-            ],
-          ),
-        ),
+        widget.token.status == "Libre" ? contenaire(size, context) : contenaire_after(size),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
@@ -226,5 +165,151 @@ class _homeFirstState extends State<homeFirst> {
         ),
       ],
     );
+  }
+
+  Container contenaire(Size size, BuildContext context) {
+    return Container(
+        width: size.width * 0.9,
+        height: size.height * 0.3,
+        decoration: BoxDecoration(
+          color: bleuclaire5,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Bienvenue ${widget.token.nom}",
+                    style: TextStyle(
+                        color: rose,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                  ),
+                  Text(
+                    "Commencer Votre Processus,\navec des Etapes Simples.",
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 11,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => demande(token:widget.token,)));
+                    },
+                    child: Container(
+                      width: (size.width * 0.8) * 0.45,
+                      height: (size.height * 0.3) * 0.15,
+                      decoration: BoxDecoration(
+                          color: bleufonce,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          "Commencer",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SizedBox(
+                height: (size.width * 0.8) * 0.7,
+                child: Image.asset('assets/images/homefirst.png'),
+              ),
+            ),
+          ],
+        ),
+      );
+  }
+
+
+
+
+  Container contenaire_after(Size size) {
+    return Container(
+        width: size.width * 0.9,
+        height: size.height * 0.3,
+        decoration: BoxDecoration(
+          color: bleuclaire5,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Félicitation ${widget.token.nom}",
+                    style: TextStyle(
+                        color: rose,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 11,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Votre demande est "
+                      ),
+                      TextSpan(
+                        text: "${widget.token.status}\n",
+                        style: TextStyle(
+                          color: rose,
+                          fontWeight: FontWeight.bold
+                          )
+                      ),
+                      TextSpan(
+                        text: "il vous reste que queleques étapes ..."
+                      ),
+                    ],
+                    ),
+                    
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      width: (size.width * 0.8) * 0.45,
+                      height: (size.height * 0.3) * 0.15,
+                      decoration: BoxDecoration(
+                          color: bleufonce,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          "Voir étapes suivantes",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SizedBox(
+                height: (size.width * 0.8) * 0.7,
+                child: Image.asset('assets/images/Time_management-rafiki.png'),
+              ),
+            ),
+          ],
+        ),
+      );
   }
 }

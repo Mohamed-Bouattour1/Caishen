@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 
 import '../tools/Colors.dart';
 
@@ -15,81 +15,7 @@ class _homeAfterState extends State<homeAfter> {
     final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: size.width * 0.9,
-          height: size.height * 0.3,
-          decoration: BoxDecoration(
-            color: bleuclaire5,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Félicitation Haifa",
-                      style: TextStyle(
-                          color: rose,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontSize: 11,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: "Votre demande a atteint"
-                        ),
-                        TextSpan(
-                          text: " 62%,\n",
-                          style: TextStyle(
-                            color: rose,
-                            fontWeight: FontWeight.bold
-                            )
-                        ),
-                        TextSpan(
-                          text: "il vous reste que queleques étapes ..."
-                        ),
-                      ],
-                      ),
-                      
-                    ),
-                    GestureDetector(
-                      child: Container(
-                        width: (size.width * 0.8) * 0.45,
-                        height: (size.height * 0.3) * 0.15,
-                        decoration: BoxDecoration(
-                            color: bleufonce,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Center(
-                          child: Text(
-                            "Voir étapes suivantes",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: (size.width * 0.8) * 0.7,
-                  child: Image.asset('assets/images/Time_management-rafiki.png'),
-                ),
-              ),
-            ],
-          ),
-        ),
+        contenaire_after(size),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
@@ -250,4 +176,83 @@ class _homeAfterState extends State<homeAfter> {
       ],
     );
   }
+
+  Container contenaire_after(Size size) {
+    return Container(
+        width: size.width * 0.9,
+        height: size.height * 0.3,
+        decoration: BoxDecoration(
+          color: bleuclaire5,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Félicitation Haifa",
+                    style: TextStyle(
+                        color: rose,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 11,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Votre demande a atteint"
+                      ),
+                      TextSpan(
+                        text: " 62%,\n",
+                        style: TextStyle(
+                          color: rose,
+                          fontWeight: FontWeight.bold
+                          )
+                      ),
+                      TextSpan(
+                        text: "il vous reste que queleques étapes ..."
+                      ),
+                    ],
+                    ),
+                    
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      width: (size.width * 0.8) * 0.45,
+                      height: (size.height * 0.3) * 0.15,
+                      decoration: BoxDecoration(
+                          color: bleufonce,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          "Voir étapes suivantes",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SizedBox(
+                height: (size.width * 0.8) * 0.7,
+                child: Image.asset('assets/images/Time_management-rafiki.png'),
+              ),
+            ),
+          ],
+        ),
+      );
+  }
 }
+ */

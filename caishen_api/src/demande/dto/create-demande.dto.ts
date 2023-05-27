@@ -12,7 +12,6 @@ export class CreateDemandeDto {
     readonly engagement: Engagement;
     type: string;
     mnt_crd: number;
-    mnt_rnb: number;
     duree_rnb: number;
     datedeblocage: string
     datepremech: string
