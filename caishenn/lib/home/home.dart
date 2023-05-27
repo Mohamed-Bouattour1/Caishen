@@ -16,9 +16,10 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import '../tools/appbarclip.dart';
 
 import '../tools/loadingScreen.dart';
+
 class home extends StatefulWidget {
   final Token token;
-   home({super.key , required this.token});
+  home({super.key, required this.token});
 
   @override
   State<home> createState() => _homeState();
@@ -39,17 +40,17 @@ class _homeState extends State<home> {
     super.initState();
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
-    final  size = MediaQuery.of(context).size;
-    
-    return 
-    _isLoading ?
-    loading_screen(height: size.height, width: size.width,)
-  
-    /* Container(
+    final size = MediaQuery.of(context).size;
+
+    return _isLoading
+        ? loading_screen(
+            height: size.height,
+            width: size.width,
+          )
+
+        /* Container(
       color: Colors.white,
       height: size.height,
       width: size.width,
@@ -58,117 +59,120 @@ class _homeState extends State<home> {
         child: Image.asset('assets/images/logo_mobile.png').animate().fade(duration: 500.ms)
   .scale(delay: 500.ms))),
     ) */
-    :
-    AdvancedDrawer(
-      
-       backdrop: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomRight,
-            colors: gradient,
-          ),
-        ),
-      ),
-      controller: _advancedDrawerController,
-      animationCurve: Curves.easeInOut,
-      animationDuration:  Duration(milliseconds: 300),
-      animateChildDecoration: true,
-      rtlOpening: false,
-      // openScale: 1.0,
-      disabledGestures: false,
-      childDecoration: const BoxDecoration(
-        // NOTICE: Uncomment if you want to add shadow behind the page.
-        // Keep in mind that it may cause animation jerks.
-        // boxShadow: <BoxShadow>[
-        //   BoxShadow(
-        //     color: Colors.black12,
-        //     blurRadius: 0.0,
-        //   ),
-        // ],
-        borderRadius: const BorderRadius.all(Radius.circular(16)),),
-        drawer: SafeArea(
-        child: Container(
-          child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: size.height*0.4,
-                  height: size.height*0.25,
-                  margin:  EdgeInsets.only(
-                    bottom: size.height*0.05,
-                  ),
-                  decoration: BoxDecoration(
-                    //color: Colors.black26,
-                  ),
+        : AdvancedDrawer(
+            backdrop: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomRight,
+                  colors: gradient,
+                ),
+              ),
+            ),
+            controller: _advancedDrawerController,
+            animationCurve: Curves.easeInOut,
+            animationDuration: Duration(milliseconds: 300),
+            animateChildDecoration: true,
+            rtlOpening: false,
+            // openScale: 1.0,
+            disabledGestures: false,
+            childDecoration: const BoxDecoration(
+              // NOTICE: Uncomment if you want to add shadow behind the page.
+              // Keep in mind that it may cause animation jerks.
+              // boxShadow: <BoxShadow>[
+              //   BoxShadow(
+              //     color: Colors.black12,
+              //     blurRadius: 0.0,
+              //   ),
+              // ],
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
+            ),
+            drawer: SafeArea(
+              child: Container(
+                child: ListTileTheme(
+                  textColor: Colors.white,
+                  iconColor: Colors.white,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Image.asset(
-                        'assets/images/logo_caishen.png',
-                      ),
                       Container(
-                  height: 1.2,
-                  width: size.width*0.4,
-                  color: Colors.white,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.person,color: bleufonce,),
-                    SizedBox(width: 5,),
-                    Container(
-                      child: Text("${widget.token.prenom} ${widget.token.nom}",
-                      style: TextStyle(
-                        color: bleufonce,
-                        fontSize: 16
+                        width: size.height * 0.4,
+                        height: size.height * 0.25,
+                        margin: EdgeInsets.only(
+                          bottom: size.height * 0.05,
+                        ),
+                        decoration: BoxDecoration(
+                            //color: Colors.black26,
+                            ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Image.asset(
+                              'assets/images/logo_caishen.png',
+                            ),
+                            Container(
+                              height: 1.2,
+                              width: size.width * 0.4,
+                              color: Colors.white,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: bleufonce,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  child: Text(
+                                    "${widget.token.prenom} ${widget.token.nom}",
+                                    style: TextStyle(
+                                        color: bleufonce, fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              height: 1.2,
+                              width: size.width * 0.4,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
                       ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.home,
+                          color: Colors.white,
+                        ),
+                        title: Text(translation(context).acceuil),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 1.2,
-                  width: size.width*0.4,
-                  color: Colors.white,
-                ),
-                    ],
-                  ),
-                ),
-                
-                
-                ListTile(
-                    leading: Icon(
-                      Icons.home,
-                      color: Colors.white,
-                    ),
-                    title:  Text(translation(context).acceuil),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  
                       ListTile(
                         leading: Icon(
                           Icons.request_quote,
                         ),
-                        title:  Text(translation(context).faireUneDemande),
+                        title: Text(translation(context).faireUneDemande),
                         onTap: () {
                           Navigator.push(
-                            context, MaterialPageRoute(builder: (_) => demande(token:widget.token,)));
-                    
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => demande(
+                                        token: widget.token,
+                                      )));
                         },
                       ),
                       ListTile(
                         leading: Icon(
                           Icons.follow_the_signs,
                         ),
-                        title:  Text(translation(context).suivreMesDemandes),
+                        title: Text(translation(context).suivreMesDemandes),
                         onTap: () {
                           Navigator.pop(context);
                         },
@@ -177,7 +181,7 @@ class _homeState extends State<home> {
                         leading: Icon(
                           Icons.cast_for_education,
                         ),
-                        title:  Text(translation(context).suivreMesCrdits),
+                        title: Text(translation(context).suivreMesCrdits),
                         onTap: () {
                           Navigator.pop(context);
                         },
@@ -186,7 +190,7 @@ class _homeState extends State<home> {
                         leading: Icon(
                           Icons.train,
                         ),
-                        title:  Text(translation(context).suivreMesEchances),
+                        title: Text(translation(context).suivreMesEchances),
                         onTap: () {
                           Navigator.pop(context);
                         },
@@ -195,70 +199,71 @@ class _homeState extends State<home> {
                         leading: Icon(
                           Icons.home,
                         ),
-                        title:  Text(translation(context).rseau),
+                        title: Text(translation(context).rseau),
                         onTap: () {
                           Navigator.pop(context);
                         },
                       ),
-                Spacer(),
-                DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white54,
-                  ),
-                  child: Container(
-                    margin:  EdgeInsets.symmetric(
-                      vertical: size.height*0.02,
-                    ),
-                    child: Text('Terms of Service | Privacy Policy'),
+                      Spacer(),
+                      DefaultTextStyle(
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white54,
+                        ),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: size.height * 0.02,
+                          ),
+                          child: Text('Terms of Service | Privacy Policy'),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-      child: Scaffold(
-        appBar:AppBar(
-          iconTheme: IconThemeData(
-            size: 35, //change size on your need
-            color: bleufonce, //change color on your need
-          ),
-          backgroundColor: bleuclaire2,
-          toolbarHeight: size.height * 0.12,
-          elevation: 0,
-          shape: CustomAppBarShape(multi:0.05),
-          centerTitle: true,
-          title: SizedBox(
-              width: size.width * 0.40,
-              height: size.height * 0.10,
-              child: Image.asset("assets/images/logo_caishen.png")),
-          leading: IconButton(
-            onPressed: _handleMenuButtonPressed,
-            icon: ValueListenableBuilder<AdvancedDrawerValue>(
-              valueListenable: _advancedDrawerController,
-              builder: (_, value, __) {
-                return AnimatedSwitcher(
-                  duration: Duration(milliseconds: 250),
-                  child: Icon(
-                    value.visible ? Icons.clear : Icons.menu,
-                    key: ValueKey<bool>(value.visible),
+            child: Scaffold(
+              appBar: AppBar(
+                iconTheme: IconThemeData(
+                  size: 35, //change size on your need
+                  color: bleufonce, //change color on your need
+                ),
+                backgroundColor: bleuclaire2,
+                toolbarHeight: size.height * 0.12,
+                elevation: 0,
+                shape: CustomAppBarShape(multi: 0.05),
+                centerTitle: true,
+                title: SizedBox(
+                    width: size.width * 0.40,
+                    height: size.height * 0.10,
+                    child: Image.asset("assets/images/logo_caishen.png")),
+                leading: IconButton(
+                  onPressed: _handleMenuButtonPressed,
+                  icon: ValueListenableBuilder<AdvancedDrawerValue>(
+                    valueListenable: _advancedDrawerController,
+                    builder: (_, value, __) {
+                      return AnimatedSwitcher(
+                        duration: Duration(milliseconds: 250),
+                        child: Icon(
+                          value.visible ? Icons.clear : Icons.menu,
+                          key: ValueKey<bool>(value.visible),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ),
-          actions: [
-            
-            Icon(
-              Icons.notifications_rounded,
-              color: jaune,
-              size: 35,
-            ),
-            SizedBox(width: size.width*0.01,),
-          ],
-        ),
-         /* AppBar(
+                ),
+                actions: [
+                  Icon(
+                    Icons.notifications_rounded,
+                    color: jaune,
+                    size: 35,
+                  ),
+                  SizedBox(
+                    width: size.width * 0.01,
+                  ),
+                ],
+              ),
+              /* AppBar(
           iconTheme: IconThemeData(
             size: 35, //change size on your need
             color: bleufonce, //change color on your need
@@ -279,116 +284,128 @@ class _homeState extends State<home> {
             ),
           ],
         ), */
-        body: Stack(children: [
-          Padding(
-            padding: EdgeInsets.only(top: size.height * 0.03),
-            child: Container(
-              width: size.width,
-              height: size.height,
-              child: homeFirst(token : widget.token) ,
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: ClipPath(
-                clipper: Clippbot(),
-                child: Container(
-                  width: size.width,
-                  height: size.height * 0.1,
-                  decoration: BoxDecoration(
-                    color: bleufonce
-                    /* gradient: LinearGradient(
+              body: Stack(children: [
+                Padding(
+                  padding: EdgeInsets.only(top: size.height * 0.03),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    child: homeFirst(token: widget.token),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: ClipPath(
+                      clipper: Clippbot(),
+                      child: Container(
+                        width: size.width,
+                        height: size.height * 0.1,
+                        decoration: BoxDecoration(color: bleufonce
+                            /* gradient: LinearGradient(
                       colors: gradient,
                       begin: Alignment.topLeft,
                       end: Alignment.bottomLeft,
                     ), */
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                          MaterialPageRoute(builder: (_) =>  history(token : widget.token)));
-                          },
-                          icon: Icon(
-                            Icons.history,
-                            size: 30,
-                            color: Colors.white,
-                          )),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                          MaterialPageRoute(builder: (_) =>  agences()));
-                          },
-                          icon: Icon(
-                            Icons.location_on,
-                            size: 30,
-                            color: Colors.white,
-                          )),
-                      SizedBox(
-                        width: size.width * 0.2,
+                            ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              history(token: widget.token)));
+                                },
+                                icon: Icon(
+                                  Icons.history,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => agences()));
+                                },
+                                icon: Icon(
+                                  Icons.location_on,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                            SizedBox(
+                              width: size.width * 0.2,
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => contact()));
+                                },
+                                icon: Icon(
+                                  Icons.contact_phone,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => settingsPage(
+                                              token: widget.token,
+                                            )),
+                                  );
+                                },
+                                icon: Icon(
+                                  Icons.settings,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                          ],
+                        ),
+                      )),
+                ),
+                Positioned(
+                  top: size.height * 0.71,
+                  left: size.width * 0.45,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => simulateur(
+                                  token: widget.token,
+                                )),
+                      );
+                    },
+                    child: Container(
+                      height: size.height * 0.15,
+                      width: size.width * 0.15,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: GradientBoxBorder(
+                          gradient: LinearGradient(colors: gradient),
+                          width: 4,
+                        ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                          MaterialPageRoute(builder: (_) =>  contact()));
-                          },
-                          icon: Icon(
-                            Icons.contact_phone,
-                            size: 30,
-                            color: Colors.white,
-                          )),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => settingsPage()),
-                );
-                          },
-                          icon: Icon(
-                            Icons.settings,
-                            size: 30,
-                            color: Colors.white,
-                          )),
-                    ],
-                  ),
-                )),
-          ),
-          Positioned(
-            top: size.height * 0.71,
-            left: size.width * 0.45,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => simulateur(token: widget.token,)),
-                );
-              },
-              child: Container(
-                height: size.height * 0.15,
-                width: size.width * 0.15,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  border: GradientBoxBorder(
-                    gradient: LinearGradient(colors: gradient),
-                    width: 4,
+                      child: Icon(
+                        Icons.add,
+                        size: 50,
+                        color: rose,
+                      ),
+                    ),
                   ),
                 ),
-                child: Icon(
-                  Icons.add,
-                  size: 50,
-                  color: rose,
-                ),
-              ),
+              ]),
             ),
-          ),
-        ]),
-      ),
-    );
+          );
   }
 
   void _handleMenuButtonPressed() {

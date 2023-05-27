@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -17,7 +16,6 @@ void main() {
       systemNavigationBarColor: bleufonce,
     ),
   );
-  
 }
 
 class MyApp extends StatefulWidget {
@@ -26,25 +24,27 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-static void setLocale(BuildContext context, Locale newLocale) {
+  static void setLocale(BuildContext context, Locale newLocale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
   }
 }
+
 class _MyAppState extends State<MyApp> {
-     
   // This widget is the root of your application.
   Locale? _locale;
- setLocale(Locale locale) {
+  setLocale(Locale locale) {
     setState(() {
       _locale = locale;
     });
   }
+
   @override
   void didChangeDependencies() {
     getLocale().then((locale) => {setLocale(locale)});
     super.didChangeDependencies();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,10 +53,10 @@ class _MyAppState extends State<MyApp> {
       /* theme: ThemeClass.light,
       darkTheme: ThemeClass.dark,
       themeMode: ThemeMode.system, */
-       localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,
-      home:  MyHomePage(
+      home: MyHomePage(
         title: 'caishen',
       ),
     );
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-   MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect

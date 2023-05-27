@@ -25,18 +25,17 @@ Future<Locale> getLocale() async {
 Locale _locale(String languageCode) {
   switch (languageCode) {
     case ENGLISH:
-      return  Locale(ENGLISH, null);
+      return Locale(ENGLISH, null);
     case FRANCAIS:
-      return  Locale(FRANCAIS, null);
+      return Locale(FRANCAIS, null);
     case ARABIC:
-      return  Locale(ARABIC, null);
+      return Locale(ARABIC, null);
 
     default:
-      return  Locale(FRANCAIS, null);
+      return Locale(FRANCAIS, null);
   }
 }
 
 AppLocalizations translation(BuildContext context) {
-  
   return AppLocalizations.of(context)!;
 }
