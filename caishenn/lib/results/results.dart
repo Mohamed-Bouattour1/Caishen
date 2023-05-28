@@ -1,5 +1,10 @@
 
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:caishenn/results/viewpdf.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:caishenn/models/simulation.dart';
+import 'package:caishenn/services/simulation_service.dart';
 import 'package:flutter/material.dart';
 import '../models/token.dart';
 import '../tools/Colors.dart';
@@ -34,8 +39,11 @@ class _resultsState extends State<results> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    //var isvisible = false;
+    late File file;
     return 
     _isLoading ?
+    
     loading_screen(height: size.height, width: size.width,)
   
 :
@@ -277,7 +285,26 @@ class _resultsState extends State<results> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async{
+                      late String  dir;
+                      if (Platform.isAndroid) {
+                         //dir = (await getExternalStorageDirectory())!.path;
+                         dir = "/storage/emulated/0/Download";
+                      }else{
+                         dir = (await getApplicationDocumentsDirectory()).path;
+                      }
+                      print("directory");
+                      print(dir);
+                      final String path = '$dir/simulation.pdf';
+                      file = File(path);
+                      await file.writeAsBytes(await getpdf());
+
+                      setState(() {
+                        Navigator.push(
+                context, MaterialPageRoute(builder: (_) => pdfview(file: file,)));
+          
+                        //isvisible = true;
+                      });
                       /* Navigator.push(context,
                     MaterialPageRoute(builder: (_) => fonc())); */
                     },
@@ -292,7 +319,7 @@ class _resultsState extends State<results> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "Voir Détails",
+                            "Voir PDF",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -300,6 +327,7 @@ class _resultsState extends State<results> {
                             ),
                           ),
                           Icon(Icons.download_sharp,color: Colors.white,size: 32,),
+                          //if (isvisible) SfPdfViewer.memory(file.readAsBytesSync())
                         ],
                       ),
                     ),
@@ -312,4 +340,17 @@ class _resultsState extends State<results> {
       ),
     );
   }
+
+ getpdf() async{
+  try {
+    if (widget.token != null) {
+      return await simulationService.getpdf(widget.token!, widget.sim.id_sim!);
+    } else {
+       return await simulationService.getpdfinv(widget.sim.id_sim!);
+    }
+  } catch (e) {
+    print("error");
+  }
+}
+
 }

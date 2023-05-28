@@ -87,7 +87,7 @@ export class SimulationService {
 
 
 
-  async addsiminv(createSimulationDto: CreateSimulationDto, imei: number): Promise<simulation> {
+  async addsiminv(createSimulationDto: CreateSimulationDto, imei: string): Promise<simulation> {
 
     const inv = this.authService.createInvt(imei);
     const data = Object.assign({ invite: (await inv)._id }, createSimulationDto);

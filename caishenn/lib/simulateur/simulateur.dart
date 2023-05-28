@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
+import 'package:caishenn/services/device_id.dart';
 import 'package:caishenn/simulateur/input_Field.dart';
 import 'package:caishenn/tools/utilities.dart';
-import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../results/results.dart';
@@ -307,14 +308,18 @@ class _simulateurState extends State<simulateur> {
               ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token,)));
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
           }
         }else{
           try
           {
-            var platformVersion = await DeviceInformation.platformVersion;
-            var imei = int.parse(await DeviceInformation.deviceIMEINumber);
-          print(imei);
+            var imei ='';
+            var infos = await getInfo();
+            if (Platform.isAndroid) {
+              imei = infos.id;
+    } else if (Platform.isIOS) {
+       imei = infos.identifierForVendor;
+    }
           var res = await simulationService.simRequestinv(tosend,imei );
           if (res == "error") {
             ScaffoldMessenger.of(context)
@@ -348,8 +353,30 @@ class _simulateurState extends State<simulateur> {
               ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)))));
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
           }
+        }else{
+          try
+          {
+            var imei ='';
+            var infos = await getInfo();
+            if (Platform.isAndroid) {
+              imei = infos.id;
+    } else if (Platform.isIOS) {
+       imei = infos.identifierForVendor;
+    }
+          var res = await simulationService.simRequestinv(tosend,imei );
+          if (res == "error") {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+          } else {
+            print(res);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)),)));
+          }}on PlatformException {
+      print('Failed to get platform version.');
+    }
         }
       } else if (_amountController.text.isEmpty ||
           _amountrnbController.text.isEmpty) {
@@ -372,8 +399,30 @@ class _simulateurState extends State<simulateur> {
               ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)))));
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
           }
+        }else{
+          try
+          {
+            var imei ='';
+            var infos = await getInfo();
+            if (Platform.isAndroid) {
+              imei = infos.id;
+    } else if (Platform.isIOS) {
+       imei = infos.identifierForVendor;
+    }
+          var res = await simulationService.simRequestinv(tosend,imei );
+          if (res == "error") {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+          } else {
+            print(res);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)),)));
+          }}on PlatformException {
+      print('Failed to get platform version.');
+    }
         }
       } else if (_amountController.text.isEmpty ||
           _DureeController.text.isEmpty) {

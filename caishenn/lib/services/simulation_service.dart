@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:http/http.dart' as http;
@@ -50,7 +52,7 @@ static Future<List<dynamic>> getAllsimRequest(Token token) async {
 
 }
 
- static Future<String> simRequestinv(simulation sim , int imei) async {
+ static Future<String> simRequestinv(simulation sim , String imei) async {
 
     http.Response res = await http.post( Uri.parse(BASE_URL+'/invite/${imei}'), 
 
@@ -72,7 +74,7 @@ static Future<List<dynamic>> getAllsimRequest(Token token) async {
 
 }
 
-static  getpdf(Token token, String id) async {
+static Future<Uint8List>  getpdf(Token token, String id) async {
 
     http.Response res = await http.get( Uri.parse(BASE_URL+'/getpdf/user/${id}'), 
 
@@ -85,14 +87,14 @@ static  getpdf(Token token, String id) async {
 
     print(res.statusCode);
       if (res.statusCode == 200) {
-        return res.body;
+        return res.bodyBytes;
       }
-
+throw Exception();
       
 
 }
 
-static  getpdfinv(String id) async {
+static Future<Uint8List>  getpdfinv(String id) async {
 
     http.Response res = await http.get( Uri.parse(BASE_URL+'/getpdf/invite/${id}'), 
 
@@ -104,8 +106,9 @@ static  getpdfinv(String id) async {
 
     print(res.statusCode);
       if (res.statusCode == 200) {
-        return res.body;
+        return res.bodyBytes;
       }
+      throw Exception();
 
       
 

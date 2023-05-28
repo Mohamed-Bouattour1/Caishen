@@ -84,7 +84,7 @@ export class AuthService {
 
         }
 
-        async createInvt(imei: number) : Promise<Invite>{
+        async createInvt(imei: string) : Promise<Invite>{
 
 
             let inv = await this.invModel.findOne({imei});
