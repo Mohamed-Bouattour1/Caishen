@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose from "mongoose";
 import { User } from "src/auth/schemas/user.schema";
 import { Engagement } from "./engagement.schema";
+import { EStatus } from "src/auth/schemas/EStatus.enum";
 
 /* enum Type {
   MC = 'Montant Crédit',
@@ -18,6 +19,9 @@ export class Demande {
 
     @Prop({type: mongoose.Schema.Types.ObjectId , ref:"User"})
     user:User
+
+    @Prop({default:EStatus.EN_COURS})
+    status: EStatus
 
     @Prop()
     docs : string[]

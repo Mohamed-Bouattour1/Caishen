@@ -40,7 +40,7 @@ export class DemandeService {
     const demande = await createddem.save();
     if(demande) {
       user.dem = demande;
-      user.status = EStatus.EN_ATTENTE;
+      user.status = EStatus.EN_COURS;
       await user.save();
       await this.createDocsByEng(createddem._id,docs);
          return await this.getDocsTitleByEng(docs)

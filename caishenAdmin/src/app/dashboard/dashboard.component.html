@@ -58,6 +58,7 @@
           type="search"
           placeholder="Search"
           aria-label="Search"
+          (input)="searchMonitor($event)"
         />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
@@ -98,28 +99,26 @@
               <table class="table custom-table">
                 <thead>
                   <tr>
-                    <th>Id</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Cin</th>
+                    <th>Cin</th> 
+                    <th>Email</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr appColorDirective>
-                    <td></td>
-                    <td><strong class="text-white"></strong></td>
-                    <td><strong class="text-white"></strong></td>
-                    <td></td>
-
-                    <td>
-                      <button type="button" class="btn btn-danger">
-                        Delete
-                      </button>
-                      <button type="button" class="btn btn-info">Edit</button>
-                    </td>
+                <tbody >
+                  <tr *ngFor="let client of Clients_monitor " > 
+                      <td>{{client.nom}}</td>
+                      <td><strong class="text-black">{{client.prenom}}</strong></td>
+                      <td><strong class="text-black">{{client.cin}}</strong></td>
+                      <td class="text-black">{{client.email}}</td>
+                      <td class="text-black">{{client.status}}</td>
+                      <td><button type="button" class="btn btn-danger" >Delete</button></td>
+                      
                   </tr>
-                </tbody>
+                  
+              </tbody>
               </table>
             </div>
           </div>
@@ -150,28 +149,30 @@
               <table class="table custom-table">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Status</th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Cin</th>
-                    <th>Date de simultation</th>
+                    <th>Montent Crédit</th>
+                    <th>Durée Crédit</th>
+                    <th>Taux appliqué</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr appColorDirective>
-                    <td></td>
-                    <td><strong class="text-white"></strong></td>
-                    <td><strong class="text-white"></strong></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button type="button" class="btn btn-danger">
-                        Delete
-                      </button>
-                      <button type="button" class="btn btn-info">Edit</button>
-                    </td>
-                  </tr>
+                  <tr *ngFor="let demande of  Demands_monitor " > 
+                    <td>{{demande.type}}</td>
+                    <td><strong class="text-black">{{demande.status}}</strong></td>
+                    <td><strong class="text-black"></strong></td>
+                    <td class="text-black"></td>
+                    <td class="text-black"></td>
+                    <td><strong class="text-black">{{demande.mnt_crd}}</strong></td>
+                    <td><strong class="text-black">{{demande.duree_rnb}}</strong></td>
+                    <td><strong class="text-black">{{demande.taux_app}}</strong></td>
+                    <td><button type="button" class="btn btn-danger" >Delete</button></td>
+                   
+                </tr>
                 </tbody>
                 <!-- Table body -->
               </table>

@@ -10,10 +10,7 @@ export class AuthService {
   constructor(private readonly http: HttpClient) { }
 
   login(user: {email: string, mdp: string}): Observable<any> {
-    return this.http.post<any>(`${this.baseURL}/login`, 
-    
-      user
-   ,
+    return this.http.post<any>(`${this.baseURL}/login`, user,
     {
       headers: new HttpHeaders().append('content-type', 'application/json'),
       observe: 'response'
@@ -22,17 +19,14 @@ export class AuthService {
   }
 
   register(user:{nom: string, prenom: string, cin: string, email: string, mdp: string}): Observable<any>{
-    return this.http.post<any>(`${this.baseURL}/signup`,
-    
-    user
-    ,
+    return this.http.post<any>(`${this.baseURL}/signup`, user ,
     {
       headers: new HttpHeaders().append('content-type', 'application/json'),
       observe: 'response'
     }
     )
   }
-  mails(email:string[]): Observable<any>{
+  /* mails(email:string[]): Observable<any>{
     return this.http.post<any>(`${this.baseURL}/mail/${email}`, 
     {
       headers: new HttpHeaders().append('content-type', 'application/json'),
@@ -49,5 +43,5 @@ export class AuthService {
       observe: 'response'
     }
     )
-  }
+  } */
 }
