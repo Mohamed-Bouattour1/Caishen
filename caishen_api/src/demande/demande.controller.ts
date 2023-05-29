@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, UseInterceptors, UploadedFile, Res, HttpStatus } from '@nestjs/common';
+import {Response} from 'express'
 import { DemandeService } from './demande.service';
 import { CreateDemandeDto } from './dto/create-demande.dto';
 import { UpdateDemandeDto } from './dto/update-demande.dto';
@@ -46,6 +47,22 @@ export class DemandeController {
     return this.demandeService.getDemandeById(id);
   }
 
+  @Patch('/action/valide/:id')
+  @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+  @UseGuards(AuthGuard())
+  valide(@Param() id){
+    this.demandeService.valide(id);
+  }
+
+  @Patch('/action/refuse/:id')
+  @Roles(ERole.Admin)
+  @UseGuards(RolesGuard)
+  @UseGuards(AuthGuard())
+  refuse(@Param() id){
+    this.demandeService.refuse(id);
+  }
+
  /*  @Patch(':id')
   update(@Param('id') id: string, @Body() updateDemandeDto: UpdateDemandeDto) {
     return this.demandeService.update(+id, updateDemandeDto);
@@ -87,6 +104,17 @@ export class DemandeController {
     console.log('file', file);
     this.demandeService.handleUpload(title, file, req.user)
     return 'File upload API';
+  }
+
+  @Get('/getdocs/:id')
+  async getPdfinv(@Res() res: Response, @Param('id') id ) {
+    console.log(id)
+    const docs = await this.demandeService.getDocs(id);
+    
+  
+    /* res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=simulation.pdf'); */
+    return res.status(HttpStatus.OK).send(docs);
   }
 
   @Post('/doc')

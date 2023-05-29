@@ -20,11 +20,23 @@ export class Demande {
     @Prop({type: mongoose.Schema.Types.ObjectId , ref:"User"})
     user:User
 
+    @Prop()
+    nom : string
+
+    @Prop()
+    prenom : string
+
+    @Prop()
+    cin : string
+
     @Prop({default:EStatus.EN_COURS})
     status: EStatus
 
     @Prop()
     docs : string[]
+
+    @Prop()
+    docs_mq : string[]
 
     @Prop()
     type : string

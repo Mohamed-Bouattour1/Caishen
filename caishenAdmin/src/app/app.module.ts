@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DemandeComponent } from './demande/demande.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    DemandeComponent,
   
   ],
   imports: [

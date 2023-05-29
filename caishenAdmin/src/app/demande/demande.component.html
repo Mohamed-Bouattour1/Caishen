@@ -1,0 +1,137 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <img src="assets/images/logo-29.png" class="logo" alt="" />
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active"
+          id="nav-profile-tab "
+          data-bs-toggle="tab"
+          data-bs-target="#Clients"
+          type="button"
+          role="tab"
+          aria-controls="Clients"
+          aria-selected="false"
+          routerLink="dashboard"
+        >
+          Clients
+        </button>
+        <button
+          class="nav-link"
+          id="nav-contact-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#Demandes"
+          type="button"
+          role="tab"
+          aria-controls="Demandes"
+          aria-selected="false"
+          
+        >
+          Demandes
+        </button>
+      </div>
+      <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Clients </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Demandes</a>
+        </li>
+      </ul> -->
+     
+    </div>
+    <div class="nav navbar-nav navbar-right">
+      <a class="nav-link active" href="#"
+        ><span class="fa fa-sign-out"></span> Deconnexion</a>
+    </div>
+  </nav>
+  <div class="container" [(ngModel)]="demande">
+    <div class="item">
+        <label class="item-label">Nom:</label>
+        <span> {{demande.nom}} </span>
+        </div>
+          <div class="item">
+        <label class="item-label">Prénom:</label>
+        <span> {{demande.prenom}} </span>
+          </div>
+          
+    <div class="item">
+        <label class="item-label">CIN</label>
+        <span> {{demande.cin}} </span>
+       </div> 
+    
+     <div class="item">
+      <label class="item-label">Status:</label>
+      <span [ngStyle]="{color:setColor()}"><strong>{{demande.status}}</strong></span>
+     </div>
+     <div class="item">
+        <label class="item-label">Created At:</label>
+        <span> {{demande.createdAt}} </span>
+       </div>
+       <div class="item">
+        <label class="item-label">Type:</label>
+        <span> {{demande.type}} </span>
+        </div>
+        <div class="item">
+            <label class="item-label">Montant crédit:</label>
+            <span> {{demande.mnt_crd}} </span>
+         </div>
+      <div class="item">
+         <label class="item-label">Durée RNB:</label>
+        <span> {{demande.duree_rnb}} </span>
+       </div>    
+       <div class="item">
+        <label class="item-label">Date de déblocage:</label>
+        <span> {{demande.datedeblocage}} </span>
+       </div>
+        <div class="item">
+        <label class="item-label">Date première échéance:</label>
+         <span> {{demande.datepremech}} </span>
+        </div>
+       <div class="item">
+        <label class="item-label">Date de dépôt:</label>
+        <span> {{demande.datedepot}} </span>
+       </div>
+        <div class="item">
+        <label class="item-label">Date de réception:</label>
+        <span> {{demande.daterecep}} </span>
+        </div>
+        <div *ngFor="let doc of  demande.docs " class="item">
+        <label class="item-label">Doc</label>
+        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> {{doc}} </span>
+        </div> 
+     <div class="item">
+          <label class="item-label">Docs MQ:</label>
+      <span> {{demande.docs_mq}} </span>
+     </div>
+     
+      
+      <div class="item">
+      <label class="item-label">Périodicité:</label>
+      <span> {{demande.periodicite}} </span>
+     </div>
+     <div class="item">
+      <label class="item-label">Taux app:</label>
+      <span> {{demande.taux_app}} </span>
+     </div>
+     
+ 
+    
+        
+        <div class="buttons" >
+        <button type="button" class="btn btn-success" id="btnn" (click)="valider(demande._id)">Valider</button>
+        <button type="button" class="btn btn-danger" id="btnn" (click)="refuser(demande._id)">Refuser</button>
+    </div>
+  </div>
+ 

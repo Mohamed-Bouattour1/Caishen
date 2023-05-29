@@ -15,6 +15,8 @@ import  { Document } from "mongoose";
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "doc" })
     doc: doc
 
+    @Prop({default: ""})
+    titre: string
      
     @Prop({default: ""})
     filename: string

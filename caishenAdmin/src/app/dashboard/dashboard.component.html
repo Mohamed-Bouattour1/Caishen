@@ -68,8 +68,7 @@
   </div>
   <div class="nav navbar-nav navbar-right">
     <a class="nav-link active" href="#"
-      ><span class="fa fa-sign-out"></span> Deconnexion</a
-    >
+      ><span class="fa fa-sign-out"></span> Deconnexion</a>
   </div>
 </nav>
 <!-- / Navbar -->
@@ -93,9 +92,7 @@
               *ngIf="showDemandes"
             >
               <h1>Clients</h1>
-              <a routerLink="add" class="btn btn-sm btn-success mb-2"
-                >Ajouter Client</a
-              >
+              
               <table class="table custom-table">
                 <thead>
                   <tr>
@@ -104,7 +101,7 @@
                     <th>Cin</th> 
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    
                   </tr>
                 </thead>
                 <tbody >
@@ -113,9 +110,8 @@
                       <td><strong class="text-black">{{client.prenom}}</strong></td>
                       <td><strong class="text-black">{{client.cin}}</strong></td>
                       <td class="text-black">{{client.email}}</td>
-                      <td class="text-black">{{client.status}}</td>
-                      <td><button type="button" class="btn btn-danger" >Delete</button></td>
-                      
+                      <td class="text-black"><span [ngStyle]="{color:setColor(client)}">{{client.status}}</span></td>
+                     
                   </tr>
                   
               </tbody>
@@ -143,9 +139,7 @@
               *ngIf="!showDemandes"
             >
               <h1>Demandes</h1>
-              <a routerLink="add" class="btn btn-sm btn-success mb-2"
-                >Ajouter Demande</a
-              >
+             
               <table class="table custom-table">
                 <thead>
                   <tr>
@@ -163,14 +157,14 @@
                 <tbody>
                   <tr *ngFor="let demande of  Demands_monitor " > 
                     <td>{{demande.type}}</td>
-                    <td><strong class="text-black">{{demande.status}}</strong></td>
-                    <td><strong class="text-black"></strong></td>
-                    <td class="text-black"></td>
-                    <td class="text-black"></td>
+                    <td><strong class="text-black" ><span [ngStyle]="{color:setColor(demande)}">{{demande.status}}</span></strong></td>
+                    <td><strong class="text-black">{{demande.nom}}</strong></td>
+                    <td class="text-black">{{demande.prenom}}</td>
+                    <td class="text-black">{{demande.cin}}</td>
                     <td><strong class="text-black">{{demande.mnt_crd}}</strong></td>
                     <td><strong class="text-black">{{demande.duree_rnb}}</strong></td>
                     <td><strong class="text-black">{{demande.taux_app}}</strong></td>
-                    <td><button type="button" class="btn btn-danger" >Delete</button></td>
+                    <td><button type="button" class="btn btn-warning" (click)="consulter(demande)" >Consulter</button></td>
                    
                 </tr>
                 </tbody>

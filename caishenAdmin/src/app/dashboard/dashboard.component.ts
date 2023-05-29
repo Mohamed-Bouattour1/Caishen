@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../services/client.service';
 import { DemandeService } from '../services/demande.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
   Demands_monitor : any = [] ;
   showDemandes: boolean = true;
   activeTab: string = 'matches';
-    constructor(private readonly clientService: ClientService, private readonly demandeService: DemandeService) {}
+    constructor(private readonly clientService: ClientService, private readonly demandeService: DemandeService, private readonly router: Router) {}
 
     ngOnInit() {
         // this.accountService.getAll()
@@ -62,23 +63,28 @@ export class DashboardComponent implements OnInit {
           }
          
         } 
+
+        consulter(demande: any){
+            this.router.navigate([`demande/${demande._id}`]);
+        }
       
-
-
-
-
-
-
-
-
-
-
-
-    showTable(state: boolean) {
+        showTable(state: boolean) {
       this.showDemandes = state;
     }
 
-
+    setColor(obj : any){
+      if (obj.status == "En cours") {
+        return "lightgreen";
+      } else if (obj.status == "En attente") {
+        return "orange";
+      }else if (obj.status == "Validé") {
+        return "green";
+      }else if (obj.status == "Refusé(e)") {
+        return "red";
+      } else {
+        return "black"
+      }
+    }
 
     deleteUser(id: string) {
         // const user = this.users.find(x => x.id === id);

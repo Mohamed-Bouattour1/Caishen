@@ -1,0 +1,84 @@
+.app-brand demo{
+    background-color: #041775;
+  }
+  .form-inline {
+    margin-left: 10%;
+  }
+  .search {
+  
+  display: flex;
+  gap: 0.5rem;
+  }
+  .nav-link{
+    font-size: large;
+    font-weight:500;
+  }
+  .logo{
+    width: 11%;
+    height: 7.5%;
+    margin-top: -2%;
+    margin: 0 auto;
+    display: block;
+  }
+ 
+  ul.navbar-nav {
+    padding-top: 0.5% ;
+  }
+  
+  .nav.nav-tabs {
+    display: flex;
+  }
+  
+  .nav-link {
+    flex: 1;
+    /* Additional styling */
+  }
+  .container {
+    
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .item {
+    margin-top: 2%;
+    display: flex;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    width: 40%;
+    height: 50%;
+  }
+  
+  .item label {
+    font-weight: bold;
+    width: 40%;
+  }
+  
+  .item span {
+    margin-left: 10px;
+  }
+  .buttons{
+    display: flex;
+    
+    text-align: center;
+    padding: 5%;
+    font-size: 50%;
+  }
+  .btn{
+    border-radius: 100px;
+    padding: 1%;
+    margin: 5%;
+    width: 15rem;
+    height: 50%;
+    font-size: 380%;
+    
+  }
+  
+  .item-label{
+width: 100;
+  }
+                                

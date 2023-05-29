@@ -8,6 +8,7 @@ import { doc, docSchema } from './schemas/document.schema';
 import { DocumentDemande, DocumentDemandeSchema } from './schemas/document_demande.schema';
 import { Engagement, EngagementSchema } from './schemas/engagement.schema';
 import { MulterModule } from '@nestjs/platform-express';
+import { User, UserSchema } from 'src/auth/schemas/user.schema';
 
 @Module({
   imports: [
@@ -17,6 +18,8 @@ import { MulterModule } from '@nestjs/platform-express';
     MongooseModule.forFeature([{ name: doc.name, schema: docSchema }]),
     MongooseModule.forFeature([{ name: DocumentDemande.name, schema: DocumentDemandeSchema }]),
     MongooseModule.forFeature([{ name: Engagement.name, schema: EngagementSchema }]),
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+
   ],
   controllers: [DemandeController],
   providers: [DemandeService,AuthModule]
