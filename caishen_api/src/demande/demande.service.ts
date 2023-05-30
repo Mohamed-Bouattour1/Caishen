@@ -87,7 +87,7 @@ export class DemandeService {
   }
 
   async getDemandesByclient({id}): Promise<Demande[]>{
-    return await this.DemandeModel.find({user: id});
+    return await this.DemandeModel.find({user: id}).exec();
   }
 
   async getAllDemandes(): Promise<Demande[]>{

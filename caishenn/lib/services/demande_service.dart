@@ -89,5 +89,25 @@ static Future<String> upload(File file , String titre, Token token) async {
 
 }
 
+static Future<List<dynamic>> getdemands(String id_user, Token token) async {
+
+    http.Response res = await http.post( Uri.parse(BASE_URL+'/client'), 
+headers: {
+      "Authorization":"Bearer ${token.token}"
+    },
+    body: {"id" : id_user }
+      
+    );
+
+    print(res.statusCode);
+      if (res.statusCode == 201) {
+        
+        return jsonDecode(res.body);
+      }
+
+      return ["error"];
+
+}
+
 
 }

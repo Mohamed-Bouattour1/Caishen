@@ -4,7 +4,9 @@
 class demande {
   String? user;
   String? engagement;
-  List<String>? docs;
+  List<dynamic>? docs;
+  List<dynamic>? docs_mq;
+  String? status;
   String? id_dem;
   String? type;
   num? mnt_crd;
@@ -25,6 +27,8 @@ class demande {
       {this.user,
       this.engagement,
       this.docs,
+      this.docs_mq,
+      this.status,
       this.id_dem,
       this.type,
       this.mnt_crd,
@@ -48,6 +52,8 @@ class demande {
     user = json['user'] ;
      engagement = json['engagement'] ;
       docs = json['docs'] ;
+      docs_mq = json['docs_mq'] ;
+      status = json['status'] ;
     id_dem = json['_id'];
     type = json['type'];
     mnt_crd = json['mnt_crd'];

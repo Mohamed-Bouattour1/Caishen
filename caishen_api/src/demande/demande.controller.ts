@@ -34,10 +34,8 @@ export class DemandeController {
     return this.demandeService.getAllDemandes();
   }
   @Post('/client')
-  @Roles(ERole.Admin)
-  @UseGuards(RolesGuard)
   @UseGuards(AuthGuard())
-  findOneByClient(@Body() id) {
+  findByClient(@Body() id) {
     return this.demandeService.getDemandesByclient(id);
   }
 

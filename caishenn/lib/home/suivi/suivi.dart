@@ -1,20 +1,20 @@
-import 'package:caishenn/models/simulation.dart';
+import 'package:caishenn/home/suivi/card_dem.dart';
+import 'package:caishenn/models/demande.dart';
+import 'package:caishenn/services/demande_service.dart';
 import 'package:caishenn/tools/Colors.dart';
 import 'package:flutter/material.dart';
-import '../../services/simulation_service.dart';
 
 import '../../models/token.dart';
-import 'card_sim.dart';
 
-class history extends StatefulWidget {
+class suivi extends StatefulWidget {
   final Token token ;
-  const history({super.key, required this.token});
+  const suivi({super.key, required this.token});
 
   @override
-  State<history> createState() => _historyState();
+  State<suivi> createState() => _suiviState();
 }
 
-class _historyState extends State<history> {
+class _suiviState extends State<suivi> {
   
 
   @override
@@ -30,7 +30,7 @@ class _historyState extends State<history> {
         width: width,
         child: FutureBuilder(
         
-          future: _readsimulation(),
+          future: _readdemands(widget.token.id_user!),
           builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
             if (snapshot.hasData){
               print(snapshot.data);
@@ -41,8 +41,13 @@ class _historyState extends State<history> {
                   reverse: true,
                   shrinkWrap: true,
                 itemBuilder: (context, i) {
-                  print(simulation.fromJson(snapshot.data![i]));
-                  return card_sim(height: height, width: width, sim: simulation.fromJson(snapshot.data![i]), token: widget.token);
+                  print(snapshot.data![i]);
+                  if (snapshot.data![i] != "error") {
+                    return card_dem(height: height, width: width, dem: demande.fromJson(snapshot.data![i]), token: widget.token);
+                  } else {
+                    return Container();
+                  }
+                  
                 },
                 separatorBuilder: (context, i) {
                   return Container(
@@ -68,9 +73,9 @@ class _historyState extends State<history> {
     );
 
   }
-  Future<List<dynamic>>  _readsimulation () async {
-    var simu = await simulationService.getAllsimRequest(widget.token);
-    print(simu);
-    return simu;   
+  Future<List<dynamic>>  _readdemands (String id) async {
+    var deme = await demandeservice.getdemands(id,widget.token);
+    print(deme);
+    return deme;   
   }
 }

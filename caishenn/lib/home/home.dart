@@ -6,6 +6,7 @@ import 'package:caishenn/home/homeAfter.dart';
 import 'package:caishenn/home/homeFirst.dart';
 import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/home/settings/settings.dart';
+import 'package:caishenn/home/suivi/suivi.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/simulateur/simulateur.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import '../tools/appbarclip.dart';
 
 import '../tools/loadingScreen.dart';
+import '../tools/utilities.dart';
 
 class home extends StatefulWidget {
   final Token token;
@@ -160,12 +162,19 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).faireUneDemande),
                         onTap: () {
-                          Navigator.push(
+                          if (widget.token.status == "Libre") {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (_) => demande(
                                         token: widget.token,
                                       )));
+                          } else {
+                            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackbar("Désolé", "Vous avez déja une demande en cours ou en attente"));
+                          }
+                          
                         },
                       ),
                       ListTile(
@@ -174,7 +183,12 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).suivreMesDemandes),
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => suivi(
+                                        token: widget.token,
+                                      )));
                         },
                       ),
                       ListTile(

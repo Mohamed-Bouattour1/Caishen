@@ -21,12 +21,14 @@ class _foncState extends State<fonc> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: bleufonce,
+      ),
       body: Container(
         height: height,
         width: width,
         child: Column(
               children: [
-                Container(height:height*0.05,),
                   
                 ListView.separated(
                   reverse: true,

@@ -26,10 +26,8 @@ class _mapState extends State<map> {
         host: 'maps.apple.com',
         path: '/',
         queryParameters: {'q': '$mpsoft'});
-    //final String gurl = "comgooglemaps://?center=$mpsoft";
-    //final String aurl = "https://maps.apple.com/?q=$mpsoft";
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    /* final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width; */
     //final Size size = MediaQuery.of(context).size;
 
     return Stack(
