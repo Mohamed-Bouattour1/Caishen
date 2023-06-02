@@ -67,6 +67,9 @@ export class DashboardComponent implements OnInit {
         consulter(demande: any){
             this.router.navigate([`demande/${demande._id}`]);
         }
+        consultercli(client_id:any){
+          this.router.navigate([`Client/demandes/${client_id}`]);
+        }
       
         showTable(state: boolean) {
       this.showDemandes = state;

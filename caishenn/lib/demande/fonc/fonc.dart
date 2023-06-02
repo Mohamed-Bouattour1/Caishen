@@ -1,6 +1,4 @@
 import 'package:caishenn/demande/fonc/doc.dart';
-import 'package:caishenn/demande/fonc/scan/scan.dart';
-import 'package:caishenn/demande/fonc/upload/upload.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:flutter/material.dart';
 

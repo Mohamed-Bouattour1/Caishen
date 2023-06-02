@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DemandeComponent } from './demande/demande.component';
+import { ClidemComponent } from './clidem/clidem.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DemandeComponent } from './demande/demande.component';
     LoginComponent,
     DashboardComponent,
     DemandeComponent,
+    ClidemComponent,
   
   ],
   imports: [

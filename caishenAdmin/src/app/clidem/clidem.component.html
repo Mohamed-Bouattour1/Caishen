@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <img src="assets/images/logo-29.png" class="logo" alt="" />
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active"
+          id="nav-profile-tab "
+          data-bs-toggle="tab"
+          data-bs-target="#Clients"
+          type="button"
+          role="tab"
+          aria-controls="Clients"
+          aria-selected="false"
+          routerLink="dashboard"
+        >
+          Clients
+        </button>
+        <button
+          class="nav-link"
+          id="nav-contact-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#Demandes"
+          type="button"
+          role="tab"
+          aria-controls="Demandes"
+          aria-selected="false"
+          
+        >
+          Demandes
+        </button>
+      </div>
+      <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Clients </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Demandes</a>
+        </li>
+      </ul> -->
+     
+    </div>
+    <div class="nav navbar-nav navbar-right">
+      <a class="nav-link active" href="#"
+        ><span class="fa fa-sign-out"></span> Deconnexion</a>
+    </div>
+  </nav>
+
+
+  <h1>Demandes</h1>
+             
+              <table class="table custom-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Cin</th>
+                    <th>Montent Crédit</th>
+                    <th>Durée Crédit</th>
+                    <th>Taux appliqué</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let demande of  demandes " > 
+                    <td>{{demande.type}}</td>
+                    <td><strong class="text-black" ><span [ngStyle]="{color:setColor(demande)}">{{demande.status}}</span></strong></td>
+                    <td><strong class="text-black">{{demande.nom}}</strong></td>
+                    <td class="text-black">{{demande.prenom}}</td>
+                    <td class="text-black">{{demande.cin}}</td>
+                    <td><strong class="text-black">{{demande.mnt_crd}}</strong></td>
+                    <td><strong class="text-black">{{demande.duree_rnb}}</strong></td>
+                    <td><strong class="text-black">{{demande.taux_app}}</strong></td>
+                    <td><button type="button" class="btn btn-warning" (click)="consulter(demande)" >Consulter</button></td>
+                   
+                </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>

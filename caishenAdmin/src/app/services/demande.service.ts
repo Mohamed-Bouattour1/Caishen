@@ -22,6 +22,12 @@ export class DemandeService {
     }
     )
   }
+  getDemandeByClient(id : any){
+    return this.http.post(`${this.baseURL}/client`,{"id":`${id}`},{
+      headers: new HttpHeaders().append("Authorization",`Bearer ${this.userService.jwtToken}`),
+    }
+    )
+  }
 
   valider(id : any){
     console.log(id)

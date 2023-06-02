@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DemandeComponent } from './demande/demande.component';
+import { ClidemComponent } from './clidem/clidem.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     data: { animation: 'dashboard' },
+  },
+  {
+    path: 'Client/demandes/:client_id',
+    component: ClidemComponent,
+    data: { animation: 'Client' },
   },
   {
     path: 'demande/:dem',

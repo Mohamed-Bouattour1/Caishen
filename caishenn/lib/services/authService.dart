@@ -8,7 +8,8 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import '../models/token.dart';
 
 class authService {
-  static String BASE_URL = "http://192.168.1.188:3000/api/auth";
+ // static String BASE_URL = "http://192.168.1.188:3000/api/auth";
+  static String BASE_URL = "http://192.168.22.100:3000/api/auth";
   static Future<String> signupRequest(User user) async {
     http.Response res = await http.post(
       Uri.parse(BASE_URL + '/signup'),

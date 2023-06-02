@@ -111,6 +111,7 @@
                       <td><strong class="text-black">{{client.cin}}</strong></td>
                       <td class="text-black">{{client.email}}</td>
                       <td class="text-black"><span [ngStyle]="{color:setColor(client)}">{{client.status}}</span></td>
+                      <td><button type="button" class="btn btn-warning" (click)="consultercli(client._id)" >Consulter</button></td>
                      
                   </tr>
                   
