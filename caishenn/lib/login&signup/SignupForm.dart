@@ -75,7 +75,7 @@ class _SignupFormState extends State<SignupForm> {
                           color: bleufonce,
                           fontSize: 19,
                         ),
-                        labelText: "Prenom" /*  translation(context).nom */,
+                        labelText: translation(context).prenom /*  translation(context).nom */,
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(3),
@@ -87,7 +87,7 @@ class _SignupFormState extends State<SignupForm> {
                         contentPadding: EdgeInsets.all(5.0)),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "entrer votre prenom" /* translation(context).entrervotreNom */;
+                        return translation(context).entrerVotrePrenom /* translation(context).entrervotreNom */;
                       }
 
                       return null;
@@ -111,7 +111,7 @@ class _SignupFormState extends State<SignupForm> {
                             color: bleufonce,
                             fontSize: 19,
                           ),
-                          labelText:  "Cin"/* translation(context).nom */,
+                          labelText:  translation(context).cin/* translation(context).nom */,
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(3),
@@ -123,11 +123,11 @@ class _SignupFormState extends State<SignupForm> {
                           contentPadding: EdgeInsets.all(5.0)),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "entrer votre cin"; /* translation(context).entrervotreNom; */
+                          return translation(context).entrerVotreCin; /* translation(context).entrervotreNom; */
                         } else if (value.length < 8) {
-                        return "cin trop court";
+                        return translation(context).tropCourt;
                       } else if (value.length > 8) {
-                        return "cin trop long";
+                        return translation(context).tropLong;
                       } 
 
                         return null;

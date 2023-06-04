@@ -49,4 +49,12 @@
     flex: 1;
     /* Additional styling */
   }
+  .container {
+    
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #f0f0f0;
+  }
   

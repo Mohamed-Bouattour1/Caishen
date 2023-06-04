@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         if(req.status == 201) {
           this.userservice.setAuth(token);
           console.log(token)
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard/Clients']);
         } else {
         }
       }); 

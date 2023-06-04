@@ -1,3 +1,4 @@
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:flutter/material.dart';
 import '../agences/agences.dart';
 import '../tools/Colors.dart';
@@ -44,7 +45,7 @@ class _contactState extends State<contact> {
             top: MediaQuery.of(context).size.height / 9,
             left: MediaQuery.of(context).size.width / 4,
             child: Text(
-              "Contactez-Nous",
+               translation(context).contactezNous,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30,
@@ -86,7 +87,7 @@ class _contactState extends State<contact> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
-                        child: Text("Appeler",
+                        child: Text(translation(context).appeler,
                   style: TextStyle(color: rose,fontSize: 15),),
                       ),
                     ),
@@ -117,7 +118,7 @@ class _contactState extends State<contact> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
-                        child: Text("E-mail",
+                        child: Text(translation(context).eMail,
                   style: TextStyle(color: rose,fontSize: 15),),
                       ),
                     ),
@@ -127,7 +128,7 @@ class _contactState extends State<contact> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.location_on,color: jaune,size: 30,),
-                      Text("Adresse",
+                      Text(translation(context).adresse,
                       style: TextStyle(color: bleufonce,fontSize: 15),
                       ),
                     ],
@@ -149,7 +150,7 @@ class _contactState extends State<contact> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Center(
-                            child: Text("Voir Toutes les Agences",
+                            child: Text(translation(context).voirToutesLesAgences,
                       style: TextStyle(color: rose,fontSize: 15),),
                           ),
                         ),

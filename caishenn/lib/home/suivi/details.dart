@@ -1,3 +1,4 @@
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/demande.dart';
 import 'package:caishenn/tools/Colors.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +26,11 @@ class _detailsState extends State<details> {
         color: Colors.white,
         child: Column(
       children: [
-        wid("type",widget.dem.type.toString(),width,height),
-        wid("montant",widget.dem.mnt_crd.toString(),width,height),
-        wid("duree",widget.dem.duree_rnb.toString(),width,height),
-        wid("date déblocage",widget.dem.datedeblecage.toString(),width,height),
-        wid("date première échéance",widget.dem.datepremech.toString(),width,height),
+        wid(translation(context).type,widget.dem.type.toString(),width,height),
+        wid(translation(context).montant,widget.dem.mnt_crd.toString(),width,height),
+        wid(translation(context).duree,widget.dem.duree_rnb.toString(),width,height),
+        wid(translation(context).dateDeblocage,widget.dem.datedeblecage.toString(),width,height),
+        wid(translation(context).datePremiereEcheance,widget.dem.datepremech.toString(),width,height),
         wid("date dépot",widget.dem.datedepot.toString(),width,height),
         wid("date réception",widget.dem.daterecep.toString(),width,height),
         wid("taux appliqué",widget.dem.taux_app.toString(),width,height),

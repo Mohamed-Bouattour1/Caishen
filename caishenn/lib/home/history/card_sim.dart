@@ -1,4 +1,5 @@
 import 'package:caishenn/home/history/history.dart';
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/services/simulation_service.dart';
@@ -64,7 +65,7 @@ class _card_simState extends State<card_sim> {
         backgroundColor: rose,
         foregroundColor: Colors.white,
         icon: Icons.delete,
-        label: 'Supprimer',
+        label: translation(context).supprimer,
       ),
       SlidableAction(
         // An action can be bigger than the others.
@@ -77,7 +78,7 @@ class _card_simState extends State<card_sim> {
         backgroundColor: jaune,
         foregroundColor: Colors.white,
         icon: Icons.remove_red_eye,
-        label: 'Détailles',
+        label: translation(context).detailles,
       ),
     ],
   ),

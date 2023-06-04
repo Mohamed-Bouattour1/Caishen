@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -35,7 +36,7 @@ class _DocumentScannerState extends State<DocumentScanner> {
      final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Document Scanner'),
+        title: Text(translation(context).documentScanner),
       ),
       body: Center(
         child: Column(
@@ -54,7 +55,7 @@ class _DocumentScannerState extends State<DocumentScanner> {
                         borderRadius: BorderRadius.circular(7.0),
                       ))),
             onPressed: () => _getImage(ImageSource.camera),
-              child: Text('Scanner un Document'),),
+              child: Text(translation(context).scannerUnDocument),),
             SizedBox(height: 20),
             if (_image != null) SizedBox(
               height: size.height*0.5,
@@ -76,7 +77,7 @@ class _DocumentScannerState extends State<DocumentScanner> {
                   ),
                   child: Center(
                     child: Text(
-                      "Valider",
+                      translation(context).valider,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

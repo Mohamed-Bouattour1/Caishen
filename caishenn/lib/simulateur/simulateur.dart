@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/services/device_id.dart';
@@ -72,7 +73,7 @@ class _simulateurState extends State<simulateur> {
               ),
               Input_Field(
                 title:
-                    thm == jaune ? "Montant Remboursement" : "Montant Crédit",
+                    thm == jaune ? translation(context).montantRemboursement : translation(context).montantCredit,
                 hint: "0.0  ",
                 controller:
                     thm == jaune ? _amountrnbController : _amountController,
@@ -86,10 +87,10 @@ class _simulateurState extends State<simulateur> {
               ),
               Input_Field(
                 title: thm == jaune
-                    ? "Durée Remboursement"
+                    ? translation(context).dureeRemboursement
                     : thm == rose1
-                        ? "Montant Remboursement"
-                        : "Durée Remboursement",
+                        ? translation(context).montantRemboursement
+                        : translation(context).dureeRemboursement,
                 hint: "0.0 ",
                 controller: thm == jaune
                     ? _DureeController
@@ -135,7 +136,7 @@ class _simulateurState extends State<simulateur> {
                       ),
                       child: Center(
                         child: Text(
-                          "Valider",
+                          translation(context).valider,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -259,10 +260,10 @@ class _simulateurState extends State<simulateur> {
                 bottom: (height * 0.25) * 0.2,
                 child: Text(
                   i == 0
-                      ? "Montant Crédit"
+                      ? translation(context).montantCredit
                       : i == 1
-                          ? "Durée Crédit"
-                          : "Montant Remboursement",
+                          ? translation(context).dureeCredit
+                          : translation(context).montantRemboursement,
                   style: TextStyle(
                       color: colors[i] == bleufonce ? bleuclaire1 : bleufonce,
                       fontWeight: FontWeight.bold),
@@ -305,7 +306,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
@@ -324,7 +325,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             print(res);
             Navigator.push(
@@ -337,7 +338,7 @@ class _simulateurState extends State<simulateur> {
           _DureeController.text.isEmpty) {
         ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
+              ..showSnackBar(snackbar("Attention",translation(context).toutLesChampsSontObligatoires));
       }
     } else if (thm == rose1) {
       _DureeController.clear();
@@ -350,7 +351,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
@@ -369,7 +370,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             print(res);
             Navigator.push(
@@ -382,7 +383,7 @@ class _simulateurState extends State<simulateur> {
           _amountrnbController.text.isEmpty) {
         ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
+              ..showSnackBar(snackbar("Attention", translation(context).toutLesChampsSontObligatoires));
       }
     } else if (thm == bleuclaire1) {
       print("bleuclaire");
@@ -396,7 +397,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => results(sim: simulation.fromJson(jsonDecode(res)), token: widget.token)));
@@ -415,7 +416,7 @@ class _simulateurState extends State<simulateur> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
             print(res);
             Navigator.push(
@@ -428,7 +429,7 @@ class _simulateurState extends State<simulateur> {
           _DureeController.text.isEmpty) {
         ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
+              ..showSnackBar(snackbar("Attention", translation(context).toutLesChampsSontObligatoires));
       }
     }
   }

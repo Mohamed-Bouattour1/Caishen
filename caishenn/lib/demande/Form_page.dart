@@ -1,4 +1,5 @@
 
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/services/demande_service.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class _Form_pageState extends State<Form_page> {
           builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
             if (snapshot.hasData){
               return Input_Field(
-          title: "Engagement",
+          title: translation(context).engagement,
           hint: _engController.text,
           widget: DropdownButton(
             icon: Icon(
@@ -92,7 +93,7 @@ class _Form_pageState extends State<Form_page> {
           ),
         );
             }else{
-              return Text("engagements non trouveés");
+              return Text(translation(context).engagementsNonTrouvees);
             }
           },
         ),
@@ -151,19 +152,19 @@ class _Form_pageState extends State<Form_page> {
           hint: "",
         ),  */
         Input_Field(
-          title: "Montant Crédit",
+          title: translation(context).montantCredit,
           hint: "0.0  ",
           keyboard: "num",
           controller: _amountController,
         ), 
          Input_Field(
-          title: "Durée de Remboursement",
+          title: translation(context).dureeRemboursement,
           hint: "0.0  ",
           keyboard: "num",
           controller: _DureeController,
         ), 
         Input_Field(
-          title: "Date Déblocage",
+          title: translation(context).dateDeblocage,
           hint: DateFormat('dd-MM-yyyy').format(_selectedDateDeblocage),
           widget: IconButton(
               onPressed: () async {
@@ -229,7 +230,7 @@ class _Form_pageState extends State<Form_page> {
               )),
         ),
         Input_Field(
-          title: "Date Première échéance",
+          title: translation(context).datePremiereEcheance,
           hint: DateFormat('dd-MM-yyyy').format(_selectedDaterecep),
           widget: IconButton(
               onPressed: () async {
@@ -275,7 +276,7 @@ class _Form_pageState extends State<Form_page> {
                 ),
                 child: Center(
                   child: Text(
-                    "Valider",
+                    translation(context).valider,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -337,7 +338,7 @@ class _Form_pageState extends State<Form_page> {
           if (res == "error") {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
           } else {
            Navigator.push(context,
                       MaterialPageRoute(builder: (_) => fonc(titres: res, token: widget.token,)));
@@ -347,7 +348,7 @@ class _Form_pageState extends State<Form_page> {
         _DureeController.text.isEmpty || _engController.text.isEmpty) {
            ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Attention", "tout les champs sont obligatoires"));
+              ..showSnackBar(snackbar("Attention", translation(context).toutLesChampsSontObligatoires));
       /* showDialog(
         context: context,
         builder: (_) => AlertDialog(

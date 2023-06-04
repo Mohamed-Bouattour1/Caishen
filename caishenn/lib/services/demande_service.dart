@@ -9,8 +9,8 @@ import '../models/token.dart';
 class demandeservice {
 
 
-  //static String BASE_URL = "http://192.168.1.188:3000/api/demande";
-  static String BASE_URL = "http://192.168.22.100:3000/api/demande";
+  static String BASE_URL = "http://192.168.1.188:3000/api/demande";
+  //static String BASE_URL = "http://192.168.22.100:3000/api/demande";
  static Future<List<dynamic>> demRequest(demande dem , Token token) async {
     
     http.Response res = await http.post( Uri.parse(BASE_URL), 

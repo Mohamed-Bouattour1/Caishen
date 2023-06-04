@@ -1,3 +1,4 @@
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:flutter/material.dart';
 import '../demande/demande.dart';
 import '../models/token.dart';
@@ -21,7 +22,7 @@ class _homeFirstState extends State<homeFirst> {
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
-            "Processus Crédit",
+            translation(context).processusCredit,
             style: TextStyle(
               color: bleufonce,
               fontSize: 20,
@@ -43,7 +44,7 @@ class _homeFirstState extends State<homeFirst> {
               width: size.width * 0.03,
             ),
             Text(
-              "Demande de Crédit",
+              translation(context).demandeDeCredit,
               style: TextStyle(
                   color: bleufonce, fontSize: 14, fontWeight: FontWeight.w500),
             )
@@ -75,7 +76,7 @@ class _homeFirstState extends State<homeFirst> {
               width: size.width * 0.03,
             ),
             Text(
-              "Echéancier",
+              translation(context).echancier,
               style: TextStyle(
                   color: bleufonce, fontSize: 14, fontWeight: FontWeight.w500),
             )
@@ -107,7 +108,7 @@ class _homeFirstState extends State<homeFirst> {
               width: size.width * 0.03,
             ),
             Text(
-              "Demende Officielle",
+             translation(context).demendeOfficielle,
               style: TextStyle(
                   color: bleufonce, fontSize: 14, fontWeight: FontWeight.w500),
             )
@@ -116,7 +117,7 @@ class _homeFirstState extends State<homeFirst> {
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
-            "Simulation Financière",
+            translation(context).simulationFinanciere,
             style: TextStyle(
               color: bleufonce,
               fontSize: 20,
@@ -147,7 +148,7 @@ class _homeFirstState extends State<homeFirst> {
               Positioned(
                 right: 0,
                 child: Text(
-                  "évalue les possibilités d'emprunt. Tout comme une calculette,\nle simulateur de crédit a pour but de simuler le coût du crédit\nà la consommation et sa durée",
+                 translation(context).evalueLesPossibilitesDEmpruntToutCommeUneCalculette,
                   style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -192,7 +193,7 @@ class _homeFirstState extends State<homeFirst> {
                         fontSize: 17),
                   ),
                   Text(
-                    "Commencer Votre Processus,\navec des Etapes Simples.",
+                    translation(context).commencerVotreProcessus,
                     style: TextStyle(
                       color: Colors.grey.shade700,
                       fontSize: 11,
@@ -211,7 +212,7 @@ class _homeFirstState extends State<homeFirst> {
                           borderRadius: BorderRadius.circular(5)),
                       child: Center(
                         child: Text(
-                          "Commencer",
+                          translation(context).commencer,
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.white),
                         ),
@@ -253,7 +254,7 @@ class _homeFirstState extends State<homeFirst> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Félicitation ${widget.token.nom}",
+                    translation(context).felicitation+" "+widget.token.prenom!,
                     style: TextStyle(
                         color: rose,
                         fontWeight: FontWeight.bold,
@@ -267,7 +268,7 @@ class _homeFirstState extends State<homeFirst> {
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "Votre demande est "
+                        text:translation(context).votreDemandeEst
                       ),
                       TextSpan(
                         text: "${widget.token.status}\n",
@@ -277,7 +278,7 @@ class _homeFirstState extends State<homeFirst> {
                           )
                       ),
                       TextSpan(
-                        text: "il vous reste que queleques étapes ..."
+                        text: translation(context).ilVousResteQueQuelequesEtapes
                       ),
                     ],
                     ),
@@ -292,7 +293,7 @@ class _homeFirstState extends State<homeFirst> {
                           borderRadius: BorderRadius.circular(5)),
                       child: Center(
                         child: Text(
-                          "Voir étapes suivantes",
+                          translation(context).voirEtapesSuivantes,
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.white),
                         ),

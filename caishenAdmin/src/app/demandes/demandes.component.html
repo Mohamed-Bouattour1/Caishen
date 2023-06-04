@@ -1,8 +1,5 @@
-
-
-
-  <h1>Demandes</h1>
-             <div class="contain"> 
+<h1>Demandes</h1>
+             
               <table class="table custom-table">
                 <thead>
                   <tr>
@@ -18,7 +15,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let demande of  demandes " > 
+                  <tr *ngFor="let demande of  Demands_monitor " > 
                     <td>{{demande.type}}</td>
                     <td><strong class="text-black" ><span [ngStyle]="{color:setColor(demande)}">{{demande.status}}</span></strong></td>
                     <td><strong class="text-black">{{demande.nom}}</strong></td>
@@ -33,4 +30,3 @@
                 </tbody>
                 <!-- Table body -->
               </table>
-            </div>

@@ -34,7 +34,7 @@ class _settingsPageState extends State<settingsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Language',
+                  translation(context).language,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 DropdownButton<Language>(
@@ -91,7 +91,7 @@ class _settingsPageState extends State<settingsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Sécurité',
+                  translation(context).securite,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton(
@@ -114,7 +114,7 @@ class _settingsPageState extends State<settingsPage> {
                       minHeight: 45,
                     ),
                     child: Text(
-                      "Changer Mot De Passe",
+                      translation(context).changerMotDePasse,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

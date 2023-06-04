@@ -1,5 +1,6 @@
 import 'package:caishenn/demande/fonc/scan/scan.dart';
 import 'package:caishenn/demande/fonc/upload/upload.dart';
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/simulation.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class doc_card extends StatelessWidget {
         backgroundColor: rose,
         foregroundColor: Colors.white,
         icon: Icons.upload,
-        label: 'Uploader',
+        label: translation(context).uploader,
       ),
       SlidableAction(
         // An action can be bigger than the others.
@@ -66,7 +67,7 @@ class doc_card extends StatelessWidget {
         backgroundColor: jaune,
         foregroundColor: Colors.white,
         icon: Icons.camera_enhance,
-        label: 'Scanner',
+        label: translation(context).scanner,
       ),
     ],
   ),

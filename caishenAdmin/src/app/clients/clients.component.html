@@ -1,0 +1,26 @@
+<h1>Clients</h1>
+              
+              <table class="table custom-table">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Cin</th> 
+                    <th>Email</th>
+                    <th>Status</th>
+                    
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let client of Clients_monitor " > 
+                      <td>{{client.nom}}</td>
+                      <td><strong class="text-black">{{client.prenom}}</strong></td>
+                      <td><strong class="text-black">{{client.cin}}</strong></td>
+                      <td class="text-black">{{client.email}}</td>
+                      <td class="text-black"><span [ngStyle]="{color:setColor(client)}">{{client.status}}</span></td>
+                      <td><button type="button" class="btn btn-warning" (click)="consultercli(client._id)" >Consulter</button></td>
+                     
+                  </tr>
+                  
+              </tbody>
+              </table>

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:caishenn/demande/fonc/fonc.dart';
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/services/demande_service.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,6 @@ valider_doc(BuildContext context, File file, Token token, String titre, List<dyn
     } else {
       ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("erreur", "quelques choses ne va pas "));
+              ..showSnackBar(snackbar("erreur", translation(context).quelquesChosesNeVaPas));
     }
 }

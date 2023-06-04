@@ -7,8 +7,8 @@ import 'dart:convert';
 class simulationService
 {
 
-   // static String BASE_URL = "http://192.168.1.188:3000/api/simulation";
-   static String BASE_URL = "http://192.168.22.100:3000/api/simulation";
+   static String BASE_URL = "http://192.168.1.188:3000/api/simulation";
+   //static String BASE_URL = "http://192.168.22.100:3000/api/simulation";
  static Future<String> simRequest(simulation sim , Token token) async {
 
     http.Response res = await http.post( Uri.parse(BASE_URL), 

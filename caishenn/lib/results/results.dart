@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/results/viewpdf.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:caishenn/models/simulation.dart';
@@ -71,7 +72,7 @@ class _resultsState extends State<results> {
             top: MediaQuery.of(context).size.height / 9,
             left: MediaQuery.of(context).size.width / 3,
             child: Text(
-              "Résultats",
+              translation(context).resultats,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30,
@@ -107,7 +108,7 @@ class _resultsState extends State<results> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Montant Crédit",
+                        Text(translation(context).montantCredit,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -143,7 +144,7 @@ class _resultsState extends State<results> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Durée",
+                        Text(translation(context).duree,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -179,7 +180,7 @@ class _resultsState extends State<results> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Taux appliqué",
+                        Text(translation(context).tauxApplique,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -215,7 +216,7 @@ class _resultsState extends State<results> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Montant\néchéance ",
+                        Text(translation(context).montantEcheance,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -251,7 +252,7 @@ class _resultsState extends State<results> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Total remboursement",
+                        Text(translation(context).totalRemboursement,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -319,7 +320,7 @@ class _resultsState extends State<results> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "Voir PDF",
+                            translation(context).voirPdf,
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,

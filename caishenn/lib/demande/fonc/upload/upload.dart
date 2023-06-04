@@ -1,3 +1,4 @@
+import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -42,7 +43,7 @@ bool isvisible = false;
                         borderRadius: BorderRadius.circular(7.0),
                       ))),
               onPressed: _openFileExplorer,
-              child: Text('Upload'),
+              child: Text(translation(context).upload),
             ),
             SizedBox(height: 20),
            // if (file != null) Image.file(file!),
@@ -62,7 +63,7 @@ bool isvisible = false;
                   ),
                   child: Center(
                     child: Text(
-                      "Valider",
+                      translation(context).valider,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

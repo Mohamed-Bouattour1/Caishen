@@ -185,7 +185,7 @@ class _NewPASS extends State<NewPASS> {
                 minHeight: 45,
               ),
               child: Text(
-                "Changer Mot De Passe",
+                translation(context).changerMotDePasse,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,

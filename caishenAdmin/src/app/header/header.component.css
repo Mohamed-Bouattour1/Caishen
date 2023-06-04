@@ -1,0 +1,75 @@
+.app-brand demo{
+    background-color: #041775;
+  }
+  .form-inline {
+    margin-left: 10%;
+  }
+  .search {
+  
+  display: flex;
+  gap: 0.5rem;
+  }
+  .nav-link{
+    font-size: large;
+    font-weight:500;
+  }
+  .logo{
+    width: 11%;
+    height: 7.5%;
+    margin-top: -2%;
+    margin: 0 auto;
+    display: block;
+  }
+ 
+  .ul {
+    padding-top: 0.5% ;
+
+  }
+  
+  .nav.nav-tabs {
+    display: flex;
+  }
+  
+  .nav-link {
+    flex: 1;
+    
+    
+
+    /* Additional styling */
+  }
+  .site-menu {
+    display: flex !important;  /* Set the container to use flexbox */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+   margin-top: 2%;
+}
+  
+  .site-menu li {
+    margin-right: 10px; /* Add spacing between menu items */
+  }
+  
+  .site-menu li:last-child {
+    margin-right: 0; /* Remove margin on the last menu item */
+  }
+  
+  .site-menu li a {
+    text-decoration: none; /* Remove underline from links */
+  }
+  .navbar{
+    margin-bottom: 1%;
+  }
+  .btn-outline-success{
+    color: #041775;
+    border-color: #041775;
+  }
+  .btn-outline-success:hover{
+    color: #fff;
+    background-color: #041775;
+    border-color: #041775;
+  }
+  .btn-outline-success:focus {
+    background-color: transparent;
+  }
+  .nav-link:hover,.nav-link:focus,.nav-link:active {
+  color: #041775 !important; 
+}

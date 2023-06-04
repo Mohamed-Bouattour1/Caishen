@@ -172,7 +172,7 @@ class _homeState extends State<home> {
                           } else {
                             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Désolé", "Vous avez déja une demande en cours ou en attente"));
+              ..showSnackBar(snackbar("Désolé", translation(context).vousAvezDejaUneDemandeEnCoursOuEnAttente));
                           }
                           
                         },

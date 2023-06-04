@@ -5,7 +5,7 @@ import { IMF } from "src/imf/schemas/imf.schema"
 @Schema({
     timestamps: true,
   })
-  export class Agence extends Document{
+  export class Agence {
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "IMF" })
     imf: IMF

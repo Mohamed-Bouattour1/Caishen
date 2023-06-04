@@ -1,81 +1,14 @@
 <!-- Layout container -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarTogglerDemo03"
-    aria-controls="navbarTogglerDemo03"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <img src="assets/images/logo-29.png" class="logo" alt="" />
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <button
-        class="nav-link active"
-        id="nav-profile-tab "
-        data-bs-toggle="tab"
-        data-bs-target="#Clients"
-        type="button"
-        role="tab"
-        aria-controls="Clients"
-        aria-selected="false"
-        (click)="showTable(true)"
-      >
-        Clients
-      </button>
-      <button
-        class="nav-link"
-        id="nav-contact-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#Demandes"
-        type="button"
-        role="tab"
-        aria-controls="Demandes"
-        aria-selected="false"
-        (click)="showTable(false)"
-      >
-        Demandes
-      </button>
-    </div>
-    <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Clients </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Demandes</a>
-      </li>
-    </ul> -->
-    <form class="form-inline my-2 my-lg-0">
-      <div class="search">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          (input)="searchMonitor($event)"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </div>
-    </form>
-  </div>
-  <div class="nav navbar-nav navbar-right">
-    <a class="nav-link active" href="#"
-      ><span class="fa fa-sign-out"></span> Deconnexion</a>
-  </div>
-</nav>
+<app-header></app-header>
+<div class="container">
+<router-outlet></router-outlet>
+</div>
 <!-- / Navbar -->
 
 <!-- Content wrapper -->
 
-<div class="tab-content" id="myTabContent">
+<!-- <div class="tab-content" id="myTabContent">
   <div
     class="tab-pane fade show active"
     id="Clients"
@@ -169,7 +102,7 @@
                    
                 </tr>
                 </tbody>
-                <!-- Table body -->
+                Table body 
               </table>
             </div>
           </div>
@@ -177,7 +110,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="content-wrapper">
    Content
