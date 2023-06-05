@@ -5,11 +5,13 @@ export class AgenceDto {
     @IsNotEmpty()
     nom: string;
     @IsNotEmpty()
+    nom_imf: string;
+    @IsNotEmpty()
     adresse: number;
     @IsNotEmpty()
     tel: number;
     @IsNotEmpty()
-    mail: string
+    email: string
     @IsNotEmpty()
     lat: string
     @IsNotEmpty()

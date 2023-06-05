@@ -42,4 +42,11 @@ export class AgenceController {
       return this.agenceService.getAllAgencies(nomimf);
     }
 
+    @Get('/one/:id')
+  @UseGuards(AuthGuard())
+  findOneById(@Param('id') id) {
+
+    return this.agenceService.getAgenceById(id);
+  }
+
 }

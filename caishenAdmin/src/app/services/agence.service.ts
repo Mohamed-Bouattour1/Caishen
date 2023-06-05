@@ -17,6 +17,7 @@ export class AgenceService {
     )
   }
   updateagence(id: any, agence:any){
+    console.log(agence)
     return this.http.patch(`${this.baseURL}/${id}`,agence,{
       headers: new HttpHeaders().append("Authorization",`Bearer ${this.userService.jwtToken}`),
     }
@@ -37,8 +38,21 @@ export class AgenceService {
     )
   }
 
+  getOneAgence(id : any){
+    return this.http.get(`${this.baseURL}/one/${id}`,{
+      headers: new HttpHeaders().append("Authorization",`Bearer ${this.userService.jwtToken}`),
+    }
+    )
+  }
 }
-/* @Post('/:nomimf')
+/*
+ @Post('/one')
+  @UseGuards(AuthGuard())
+  findOneById(@Body() id) {
+    return this.agenceService.getAgenceById(id);
+  }
+
+@Post('/:nomimf')
     @Roles(ERole.Admin)
     @UseGuards(RolesGuard)
     @UseGuards(AuthGuard())

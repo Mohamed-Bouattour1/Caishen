@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { ClientsComponent } from './clients/clients.component';
 import { DemandesComponent } from './demandes/demandes.component';
 import { AgencesComponent } from './agences/agences.component';
+import { AddupdateagenceComponent } from './addupdateagence/addupdateagence.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AgencesComponent } from './agences/agences.component';
     ClientsComponent,
     DemandesComponent,
     AgencesComponent,
+    AddupdateagenceComponent,
   
   ],
   imports: [

@@ -7,6 +7,7 @@ import { ClidemComponent } from './clidem/clidem.component';
 import { ClientsComponent } from './clients/clients.component';
 import { DemandesComponent } from './demandes/demandes.component';
 import { AgencesComponent } from './agences/agences.component';
+import { AddupdateagenceComponent } from './addupdateagence/addupdateagence.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,16 @@ const routes: Routes = [
     path: 'Agences',
     component: AgencesComponent,
     data: { animation: 'Agences' },
+  },
+  {
+    path: 'Agence/:Agence_id',
+    component: AddupdateagenceComponent,
+    data: { animation: 'Client' },
+  },
+  {
+    path: 'Agence',
+    component: AddupdateagenceComponent,
+    data: { animation: 'Client' },
   },
     ]
   },

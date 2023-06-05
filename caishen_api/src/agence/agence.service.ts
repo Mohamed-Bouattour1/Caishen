@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose,  { Model } from 'mongoose';
 import { IMF } from 'src/imf/schemas/imf.schema';
 import { Agence } from './schemas/agence.schema';
 import { AgenceDto } from './dto/agence.dto';
@@ -14,9 +14,13 @@ export class AgenceService {
 
         async newAgence(nom_imf: string, agencedto: AgenceDto): Promise<Agence>{
             const imf = await this.IMFModel.findOne({nom: nom_imf});
-            const data = Object.assign({ imf: imf._id }, agencedto);
+            if (imf) {
+              const data = Object.assign({ imf: imf._id, nom_imf:nom_imf }, agencedto);
             const created_agence = new this.AgenceModel(data);
             return created_agence.save();
+            }
+            throw new NotFoundException("imf non trouvée")
+            
         }
 
         async updateagence(id, agencedto: AgenceDto ): Promise<Agence> {
@@ -32,7 +36,10 @@ export class AgenceService {
           }
 
           async getAllAgencies(nom_imf: string): Promise<Agence[]>{
-            const imf = await this.IMFModel.findOne({nom: nom_imf});
-            return await this.AgenceModel.find({nom: nom_imf}).exec();
+            return await this.AgenceModel.find({nom_imf: nom_imf}).exec();
+          }
+
+          async getAgenceById(id): Promise<Agence>{
+            return await this.AgenceModel.findOne({_id: new mongoose.Types.ObjectId(id)}).exec();
           }
 }

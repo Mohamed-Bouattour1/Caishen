@@ -10,6 +10,9 @@ import { IMF } from "src/imf/schemas/imf.schema"
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "IMF" })
     imf: IMF
 
+    @Prop({})
+    nom_imf: string
+
     @Prop({required:true})
     nom: string
      

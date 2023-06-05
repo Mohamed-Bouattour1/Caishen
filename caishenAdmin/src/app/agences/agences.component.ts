@@ -25,6 +25,7 @@ export class AgencesComponent {
     //this.matches = JSON.parse(localStorage.getItem("matches") || "[]")
     this.agences = this.agenceService.getAllAgencies().subscribe(
       (data:any)=>{
+        console.log(data)
         this.agences = data ;
         this.agences_monitor = this.agences;
       }
@@ -32,27 +33,27 @@ export class AgencesComponent {
     
     }
 
+    deleteagence(agence_id:any){
+      //this.matches = JSON.parse(localStorage.getItem("matches") || "[]")
+      this.agences = this.agenceService.deleteagence(agence_id).subscribe(
+        (data:any)=>{
+         this.getAllAgencies
+        }
+      );
+      
+      }
+
    
 
+      add(){
+        this.router.navigate([`dashboard/Agence`]);
+      }
      
-     
-        consultercli(client_id:any){
-          this.router.navigate([`dashboard/clidem/${client_id}`]);
+        update(agence_id:any){
+          this.router.navigate([`dashboard/Agence/${agence_id}`]);
         }
       
         
 
-    setColor(obj : any){
-      if (obj.status == "En cours") {
-        return "lightgreen";
-      } else if (obj.status == "En attente") {
-        return "orange";
-      }else if (obj.status == "Validé") {
-        return "green";
-      }else if (obj.status == "Refusé(e)") {
-        return "red";
-      } else {
-        return "black"
-      }
-    }
+    
 }
