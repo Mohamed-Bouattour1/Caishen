@@ -7,10 +7,12 @@ import 'package:caishenn/home/homeFirst.dart';
 import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/home/settings/settings.dart';
 import 'package:caishenn/home/suivi/suivi.dart';
+import 'package:caishenn/login&signup/Login.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:caishenn/simulateur/simulateur.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import '../services/agence_service.dart';
 import '../tools/BC.dart';
 import '../tools/Colors.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
@@ -153,7 +155,6 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).acceuil),
                         onTap: () {
-                          Navigator.pop(context);
                         },
                       ),
                       ListTile(
@@ -162,18 +163,14 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).faireUneDemande),
                         onTap: () {
-                          if (widget.token.status == "Libre") {
+                          
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (_) => demande(
                                         token: widget.token,
                                       )));
-                          } else {
-                            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackbar("Désolé", translation(context).vousAvezDejaUneDemandeEnCoursOuEnAttente));
-                          }
+                          
                           
                         },
                       ),
@@ -197,7 +194,6 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).suivreMesCrdits),
                         onTap: () {
-                          Navigator.pop(context);
                         },
                       ),
                       ListTile(
@@ -206,7 +202,7 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).suivreMesEchances),
                         onTap: () {
-                          Navigator.pop(context);
+                          
                         },
                       ),
                       ListTile(
@@ -215,7 +211,18 @@ class _homeState extends State<home> {
                         ),
                         title: Text(translation(context).rseau),
                         onTap: () {
-                          Navigator.pop(context);
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.logout,
+                        ),
+                        title: Text("Déconnexion"),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => Login()));
                         },
                       ),
                       Spacer(),
@@ -340,11 +347,12 @@ class _homeState extends State<home> {
                                   color: Colors.white,
                                 )),
                             IconButton(
-                                onPressed: () {
+                                onPressed: () async{
+                                  var ag = await AgenceService.getAllAgencies();
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => agences()));
+                                          builder: (_) => agences(ag: ag,)));
                                 },
                                 icon: Icon(
                                   Icons.location_on,

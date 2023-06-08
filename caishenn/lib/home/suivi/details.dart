@@ -20,22 +20,23 @@ class _detailsState extends State<details> {
       appBar: AppBar(
         backgroundColor: bleufonce,
       ),
-      body: Container(
-        height: height,
-        width: width,
-        color: Colors.white,
-        child: Column(
-      children: [
-        wid(translation(context).type,widget.dem.type.toString(),width,height),
-        wid(translation(context).montant,widget.dem.mnt_crd.toString(),width,height),
-        wid(translation(context).duree,widget.dem.duree_rnb.toString(),width,height),
-        wid(translation(context).dateDeblocage,widget.dem.datedeblecage.toString(),width,height),
-        wid(translation(context).datePremiereEcheance,widget.dem.datepremech.toString(),width,height),
-        wid("date dépot",widget.dem.datedepot.toString(),width,height),
-        wid("date réception",widget.dem.daterecep.toString(),width,height),
-        wid("taux appliqué",widget.dem.taux_app.toString(),width,height),
-      ],
-    ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: height,
+          width: width,
+          color: Colors.white,
+          child: Column(
+        children: [
+          wid(translation(context).type,widget.dem.type.toString(),width,height),
+          wid(translation(context).montant,widget.dem.mnt_crd.toString(),width,height),
+          wid(translation(context).duree,widget.dem.duree_rnb.toString(),width,height),
+          wid(translation(context).dateDeblocage,widget.dem.datedeblecage.toString(),width,height),
+          wid(translation(context).datePremiereEcheance,widget.dem.datepremech.toString(),width,height),
+          wid("taux appliqué",widget.dem.taux_app.toString(),width,height),
+        ],
+          ),
+        ),
       ),
     );
 

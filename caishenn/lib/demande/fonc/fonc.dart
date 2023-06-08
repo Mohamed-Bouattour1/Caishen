@@ -1,4 +1,5 @@
 import 'package:caishenn/demande/fonc/doc.dart';
+import 'package:caishenn/home/home.dart';
 import 'package:caishenn/models/token.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,19 @@ class _foncState extends State<fonc> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: bleufonce,
+        leading: IconButton(
+          icon:Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => home(
+                                        token: widget.token,
+                                      )));
+          },
+         ),
       ),
       body: Container(
         height: height,

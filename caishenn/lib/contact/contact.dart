@@ -1,6 +1,7 @@
 import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:flutter/material.dart';
 import '../agences/agences.dart';
+import '../services/agence_service.dart';
 import '../tools/Colors.dart';
 import '../tools/ContainerClipper1.dart';
 import '../services/send_call.dart';
@@ -135,10 +136,11 @@ class _contactState extends State<contact> {
                   ),
                   SizedBox(height: height*0.02,),
                 GestureDetector(
-                        onTap: () {
+                        onTap: () async{
+                          var ag = await AgenceService.getAllAgencies();
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => agences()),
+                              MaterialPageRoute(builder: (context) => agences(ag: ag,)),
                             );
                         },
                         child: Container(

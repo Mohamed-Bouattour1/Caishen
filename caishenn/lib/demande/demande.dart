@@ -23,6 +23,8 @@ class _demandeState extends State<demande> {
     //final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+         centerTitle: true,
+        title: Text("Demande"),
         backgroundColor: bleufonce,
         shape: CustomAppBarShape(multi: 0.05),
         flexibleSpace: Container(

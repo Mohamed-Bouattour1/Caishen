@@ -207,7 +207,7 @@ class _Form_pageState extends State<Form_page> {
                 color: Colors.grey[600],
               )),
         ),
-        Input_Field(
+        /* Input_Field(
           title: "Date Dépot",
           hint: DateFormat('dd-MM-yyyy').format(_selectedDatedepot),
           widget: IconButton(
@@ -250,7 +250,7 @@ class _Form_pageState extends State<Form_page> {
                 Icons.calendar_today_outlined,
                 color: Colors.grey[600],
               )),
-        ),
+        ), */
         
        
         
@@ -330,8 +330,8 @@ class _Form_pageState extends State<Form_page> {
             type: _engController.text,
             datedeblecage: DateFormat('dd-MM-yyyy').format(_selectedDateDeblocage),
             datepremech: DateFormat('dd-MM-yyyy').format(_selectedDate1),
-            datedepot: DateFormat('dd-MM-yyyy').format(_selectedDatedepot),
-            daterecep: DateFormat('dd-MM-yyyy').format(_selectedDaterecep)
+           /*  datedepot: DateFormat('dd-MM-yyyy').format(_selectedDatedepot),
+            daterecep: DateFormat('dd-MM-yyyy').format(_selectedDaterecep) */
           );
           var res = await demandeservice.demRequest(tosend , widget.token);
           print(res);

@@ -41,6 +41,10 @@ export class AgenceController {
     getAllAgencies(@Param('nomimf') nomimf) : Promise<Agence[]> {
       return this.agenceService.getAllAgencies(nomimf);
     }
+    @Get('mobile/:nomimf')
+    getAllAgenciesmobile(@Param('nomimf') nomimf) : Promise<Agence[]> {
+      return this.agenceService.getAllAgencies(nomimf);
+    }
 
     @Get('/one/:id')
   @UseGuards(AuthGuard())

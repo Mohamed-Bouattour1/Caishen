@@ -1,14 +1,20 @@
 import 'package:caishenn/agences/map.dart';
 import 'package:flutter/material.dart';
 
+import '../services/agence_service.dart';
+
 
 
 class agences extends StatefulWidget {
-  const agences({super.key});
+   List<dynamic> ag ;
+   agences({super.key, required this.ag});
 
   @override
   State<agences> createState() => _agencesState();
 }
+
+@override
+
 
 class _agencesState extends State<agences> {
   @override
@@ -20,9 +26,14 @@ class _agencesState extends State<agences> {
         child: Container(
           height: height,
           width: width,
-          child: map(),
+          child: map(ag: widget.ag,),
         ),
       ),
     );
+  }
+   Future<List<dynamic>>  _readagencies () async {
+    var ag = await AgenceService.getAllAgencies();
+    print(ag);
+    return ag;   
   }
 }

@@ -27,7 +27,7 @@ export class DemandeService {
 
   async create(createDemandeDto: CreateDemandeDto, user: User): Promise<string[]> {
 
-   if (user.status == "Libre") {
+   
       const eng = await this.findEngByNoun(createDemandeDto["type"])
     if (!eng) {
       throw new NotFoundException('Engagement non existant')
@@ -53,7 +53,7 @@ export class DemandeService {
          demande.save();
          return demande.docs_mq;
     }
-  }
+  
   throw new NotAcceptableException("Client n'est pas libre")
  
 

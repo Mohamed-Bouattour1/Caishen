@@ -3,6 +3,7 @@ import 'package:caishenn/contact/contact.dart';
 import 'package:caishenn/home/languages/language.dart';
 import 'package:caishenn/home/languages/language_constants.dart';
 import 'package:caishenn/login&signup/Login.dart';
+import 'package:caishenn/services/agence_service.dart';
 import 'package:caishenn/simulateur/simulateur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -190,10 +191,12 @@ class _welcomeState extends State<welcome> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async{
+                         var ag = await AgenceService.getAllAgencies();
+                         print(ag);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => agences()),
+                            MaterialPageRoute(builder: (context) => agences(ag: ag,)),
                           );
                         },
                         child: Container(

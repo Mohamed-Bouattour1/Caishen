@@ -24,6 +24,8 @@ class _historyState extends State<history> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: bleufonce,
+         centerTitle: true,
+        title: Text("Historique Simulations"),
       ),
       body: Container(
         height: height,

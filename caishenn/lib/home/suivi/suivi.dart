@@ -24,6 +24,8 @@ class _suiviState extends State<suivi> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: bleufonce,
+        centerTitle: true,
+        title: Text("Suivi Demande"),
       ),
       body: Container(
         height: height,
